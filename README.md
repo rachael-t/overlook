@@ -37,8 +37,14 @@
 
 ## Learning Goals
 
+* Use OOP to drive the design of the application and the code
 
+* Work with an API to send and receive data
 
-## Contributors
+* Solidify the code review process
+
+* Create a robust test suite that thoroughly tests all functionality of a client-side application
+
+## Contributor
 
 * [Rachael Thomas](https://github.com/rachael-t)
