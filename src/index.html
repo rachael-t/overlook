@@ -10,7 +10,7 @@
 
 <body>
   <!-- Login Page -->
-  <header id="user-login-welcome" class="landing-page">
+  <header id="user-login-welcome" class="landing-page" style="display: flex;">
     <nav>
       <ul class="nav">
         <li>
@@ -20,22 +20,22 @@
     </nav>
     <h1>Riverside Resort</h1>
   </header>
-  <main class="landing-page">
+  <main class="landing-page" style="display: flex;">
     <section class="main-page">
       <div class="container">
         <h2 id="title">Login</h2>
         <div class="items">
           <input type="text" id="form-text" placeholder="Username" />
           <input type="password" id="form-password" placeholder="Password" />
-          <button id="button">Submit</button>
+          <button id="sign-in-button">Submit</button>
         </div>
       </div>
     </section>
   </main>
 
   <!-- Manager Page -->
-  <section class="logged-in-page hidden">
-    <header id="manager-page">
+  <section class="logged-in-page">
+    <header class="manager-page" style="display: none;">
       <nav>
         <ul class="nav">
           <li id="customer-search">
@@ -50,7 +50,7 @@
       </nav>
       <h1>Riverside Resort</h1>
     </header>
-    <main class="main-page">
+    <main class="main-page manager-page" style="display: none;">
       <ul class="category-container">
         <li id="manager-rooms-available">
           <p>Total Rooms Available</p>
@@ -70,8 +70,8 @@
   </section>
 
   <!-- Customer Page -->
-  <section class="logged-in-page hidden">
-    <header id="customer-page">
+  <section class="logged-in-page">
+    <header class="customer-page" style="display: none;">
       <nav>
         <ul class="nav">
           <li>
@@ -82,7 +82,7 @@
       </nav>
       <h1>Riverside Resort</h1>
     </header>
-    <main class="main-page">
+    <main class="main-page customer-page" style="display: none;">
       <ul class="category-container">
         <li id="customer-past-reservations">
           <p>Past Reservations</p>
