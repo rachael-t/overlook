@@ -1,14 +1,16 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 import './images/robson-hatsukami-morgan-qr7tsSwDOg0-unsplash.jpg'
 
-console.log('This is the JavaScript entry file - your code begins here.');
+$('#sign-in-button').on('click', logUserIn);
+
+function logUserIn() {
+  if ($('#form-text').val() === 'manager') {
+    $('.landing-page').css('display', 'none');
+    $('.manager-page').css('display', 'flex');
+  } else if ($('#form-text').val() === 'customer') {
+    $('.landing-page').css('display', 'none');
+    $('.customer-page').css('display', 'flex');
+  };
+}
