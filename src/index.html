@@ -1,13 +1,109 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <title>Webpack Starter Kit</title>
-  </head>
-  <body>
-    <h1>Webpack Starter Kit</h1>
 
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+<head>
+  <meta charset="UTF-8">
+  <title>Riverside Resort</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,700,900&display=swap" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="style.css" /> -->
+</head>
 
+<body>
+  <!-- Login Page -->
+  <header id="user-login-welcome" class="landing-page">
+    <nav>
+      <ul class="nav">
+        <li>
+          <p>Welcome! Please sign in.</p>
+        </li>
+      </ul>
+    </nav>
+    <h1>Riverside Resort</h1>
+  </header>
+  <main class="landing-page">
+    <section class="main-page">
+      <div class="container">
+        <h2 id="title">Login</h2>
+        <div class="items">
+          <input type="text" id="form-text" placeholder="Username" />
+          <input type="password" id="form-password" placeholder="Password" />
+          <button id="button">Submit</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Manager Page -->
+  <section class="logged-in-page hidden">
+    <header id="manager-page">
+      <nav>
+        <ul class="nav">
+          <li id="customer-search">
+            <input id="search-customer" placeholder="Customer Search" aria-label="Enter a customers name" type="text"></input>
+            <button type="submit" name="button" id="customer-search-button">Search</button>
+          </li>
+          <li>
+            <button type="submit" name="button" id="logout-btn">Logout
+            </button>
+          </li>
+        </ul>
+      </nav>
+      <h1>Riverside Resort</h1>
+    </header>
+    <main class="main-page">
+      <ul class="category-container">
+        <li id="manager-rooms-available">
+          <p>Total Rooms Available</p>
+        </li>
+        <li id="manager-todays-revenue">
+          <p>Total Revenue Today</p>
+        </li>
+        <li id="manager-todays-occupation">
+          <p>Rooms Occupied Today</p>
+        </li>
+      </ul>
+      <h2 class="customers-bookings"></h2>
+      <ul class="bookings-container">
+      </ul>
+      <div class="add-room-container"></div>
+    </main>
+  </section>
+
+  <!-- Customer Page -->
+  <section class="logged-in-page hidden">
+    <header id="customer-page">
+      <nav>
+        <ul class="nav">
+          <li>
+            <button type="submit" name="button" id="logout-btn">Logout
+            </button>
+          </li>
+        </ul>
+      </nav>
+      <h1>Riverside Resort</h1>
+    </header>
+    <main class="main-page">
+      <ul class="category-container">
+        <li id="customer-past-reservations">
+          <p>Past Reservations</p>
+        </li>
+        <li id="customer-upcoming-resverations">
+          <p>Upcoming Reservations</p>
+        </li>
+        <li id="customer-total-spent">
+          <p>Total Amount Spent</p>
+        </li>
+      </ul>
+      <h2>Make a Reservation</h2>
+      <div class="customer-select-date"></div>
+      <div class="customer-filter-options"></div>
+      <ul class="rooms-to-book-container">
+      </ul>
+    </main>
+  </section>
+  <footer>
+    <p class="footer">Copyright &copy 2020 Riverside Resort. All rights reserved.</p>
+  </footer>
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>

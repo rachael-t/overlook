@@ -1,6 +1,180 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+@import '_variables';
+@import '_mixins.scss';
 
-body {
-  background-color: $primary-background;
+// Main page
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Lato, Arial, sans-serif;
+  color: $background-dark;
+}
+
+body,
+html {
+  background-color: $background-main;
+  outline: none;
+  cursor: default;
+}
+
+ul {
+  list-style: none;
+}
+
+// Header
+h1 {
+  padding-top: 3%;
+  top: 25%;
+  font-weight: 200;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 500%;
+  word-spacing: 10px;
+}
+
+header {
+  height: 50vh;
+  // background-color: $background-light;
+  background-image: url('../images/robson-hatsukami-morgan-qr7tsSwDOg0-unsplash.jpg');
+  background-size: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+// Login page
+.main-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  margin: 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 100px;
+  background-color: $login-form;
+  border-radius: 1px;
+  width: 25em;
+  height: 40em;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+}
+
+.items input {
+  margin-bottom: 30px;
+  padding: 2px 0px;
+  padding-bottom: 5px;
+  width: 250px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 1.5px solid;
+  border-bottom-color: $border-bottom-color;
+  border-radius: 1px;
+  font-weight: 700;
+  color: $background-dark;
+  // opacity: 0.55;
+}
+
+#title {
+  margin-bottom: 50px;
+  letter-spacing: 5px;
+  text-align: center;
+  // opacity: 0.5;
+}
+
+#button {
+  padding: 20px 30px;
+  margin-top: 30px;
+  outline: none;
+  border: none;
+  font-size: medium;
+  font-weight: 600;
+  letter-spacing: 5px;
+  border-radius: 1px;
+  cursor: pointer;
+  background: #b8bfcc;
+}
+
+#button:active {
+  transform: translateY(2px);
+}
+
+// Navigation Bar
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  justify-content: space-evenly;
+  padding-top: 20px;
+}
+
+button,
+input {
+  border: 0px;
+  padding: 10px 15px;
+  font-size: 120%;
+  font-weight: 300;
+  outline: none;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
+}
+
+button {
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  // opacity: .5;
+}
+
+input {
+  cursor: text;
+  width: 60%;
+  border-radius: 5px;
+}
+
+input:hover,
+button:hover {
+  opacity: 1;
+  transition: opacity, 1s;
+}
+
+// Manager page
+.category-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  justify-content: space-evenly;
+  padding: 15px;
+  width: 100%;
+  background-color: $background-medium;
+}
+
+// Footer
+footer {
+  color: $background-dark;
+  height: 100px;
+}
+
+.footer {
+  // opacity: .5;
+  text-align: center;
+  padding-top: 40px;
+}
+
+// DOM
+.selected {
+  color: $accent;
+}
+
+.hidden {
+  display: none;
 }
