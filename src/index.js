@@ -1,21 +1,40 @@
+// Imports
 import $ from 'jquery';
 import './css/base.scss';
 import './images/turing-logo.png'
 import './images/robson-hatsukami-morgan-qr7tsSwDOg0-unsplash.jpg'
+import Fetcher from './Fetcher.js'
 
+// Global variables
+const fetcher = new Fetcher();
+
+// Event listeners
 $('body').on('click', '#sign-in-button', logUserIn);
 $('body').on('click', '.logout-btn', logUserOut);
-
+  // Manager page event listners
 $('body').on('click', '#customer-search-button', searchUserInfo);
 $('body').on('click', '#manager-rooms-available', roomsAvailableHandler);
 $('body').on('click', '#manager-todays-revenue', todaysRevenueHandler);
 $('body').on('click', '#manager-todays-occupation', todaysOccupationHandler);
-
+  // Customer event liseners
 $('body').on('click', '#customer-make-reservation', makeReservationHandler);
 $('body').on('click', '#customer-past-reservations', pastReservationsHandler);
 $('body').on('click', '#customer-upcoming-resverations', upcomingReservationsHandler);
 $('body').on('click', '#customer-total-spent', totalSpentHandler);
 
+// Functions
+function getAllData() {
+  let fetchedUsersData = fetcher.fetchUsersData()
+    .then(data => data.users);
+
+  let fetchedRoomsData = fetcher.fetchRoomsData()
+    .then(data => data.rooms);
+
+  let fetchedBookingsData = fetcher.fetchBookingsData()
+    .then(data => data.bookings);
+
+  return Promise.all([fetchedUsersData, fetchedRoomsData, fetchedBookingsData]);
+}
 
 function logUserIn() {
   if ($('#form-text').val() === 'manager') {
@@ -103,3 +122,11 @@ function testDisplayRoomCard() {
       </li>
   `)
 }
+
+
+
+
+
+
+
+getAllData().then(data => console.log(data[2]))
