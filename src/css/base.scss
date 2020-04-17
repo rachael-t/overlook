@@ -44,7 +44,7 @@ header {
 }
 
 // Login page
-.main-page {
+.landing-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,7 +92,7 @@ header {
   // opacity: 0.5;
 }
 
-#button {
+#sign-in-button {
   padding: 20px 30px;
   margin-top: 30px;
   outline: none;
@@ -103,10 +103,6 @@ header {
   border-radius: 1px;
   cursor: pointer;
   background: #b8bfcc;
-}
-
-#button:active {
-  transform: translateY(2px);
 }
 
 // Navigation Bar
@@ -147,6 +143,14 @@ button:hover {
   transition: opacity, 1s;
 }
 
+// Loaded user page
+.main-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 // Manager page
 .category-container {
   display: flex;
@@ -156,6 +160,79 @@ button:hover {
   padding: 15px;
   width: 100%;
   background-color: $background-medium;
+}
+
+#manager-rooms-available, #manager-todays-revenue, #manager-todays-occupation {
+  cursor: pointer;
+}
+
+// #manager-rooms-available, #manager-todays-revenue, #manager-todays-occupation:hover {
+//   font-weight: bold;
+//   transform: translateY(5px);
+// }
+//
+// #manager-rooms-available, #manager-todays-revenue, #manager-todays-occupation:active {
+//   font-weight: bold;
+// }
+
+// Customer page
+#customer-make-reservation, #customer-past-reservations, #customer-upcoming-resverations, #customer-total-spent {
+  cursor: pointer;
+}
+
+// Rooms view
+.rooms-to-book-container {
+  display: grid;
+  margin: 50px;
+  grid-gap: 50px;
+  justify-content: space-around;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-rows: auto;
+  list-style: none;
+}
+
+.room-card {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  min-height: 300px;
+  background-color: $background-white;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.03);
+  border-radius: 5px;
+  cursor: pointer;
+  filter: opacity(.8);
+}
+
+.room-card-title {
+  font-size: 140%;
+  text-align: center;
+  padding: 15px;
+}
+
+.room-card-details-container {
+  text-align: center;
+}
+
+.room-card-details {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.book-room-btn {
+  padding: 20px 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  outline: none;
+  border: none;
+  font-size: medium;
+  font-weight: 600;
+  letter-spacing: 5px;
+  border-radius: 1px;
+  cursor: pointer;
+  background: #b8bfcc;
 }
 
 // Footer
@@ -175,6 +252,6 @@ footer {
   color: $accent;
 }
 
-.hidden {
-  display: none;
-}
+// .hidden {
+//   display: none;
+// }
