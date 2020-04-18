@@ -44,15 +44,8 @@ describe('User', function () {
     expect(domUpdates.displayCustomerName).to.have.been.called.with("Leatha Ullrich");
   })
 
-  it('should get all bookings unique to a customer', function() {
-    expect(user.getCustomerBookings(1)).to.deep.equal([
-      {
-      "id": "5fwrgu4i7k55hl6t8",
-      "userID": 1,
-      "date": "2020/02/05",
-      "roomNumber": 6,
-      "roomServiceCharges": []
-      },
+  it('should get all past bookings unique to a customer', function() {
+    expect(user.getCustomerBookings(1, "2020/02/01", 'past')).to.deep.equal([
       {
       "id": "5fwrgu4i7k55hl6td",
       "userID": 1,
@@ -64,13 +57,6 @@ describe('User', function () {
     expect(domUpdates.displayCustomerBookings).to.have.been.called(1);
     expect(domUpdates.displayCustomerBookings).to.have.been.called.with([
       {
-      "id": "5fwrgu4i7k55hl6t8",
-      "userID": 1,
-      "date": "2020/02/05",
-      "roomNumber": 6,
-      "roomServiceCharges": []
-      },
-      {
       "id": "5fwrgu4i7k55hl6td",
       "userID": 1,
       "date": "2020/01/31",
@@ -80,5 +66,26 @@ describe('User', function () {
     ]);
   })
 
+  // it('should get all future bookings unique to a customer', function() {
+  //   expect(user.getCustomerBookings(1, "2020/02/01", 'past')).to.deep.equal([
+  //     {
+  //     "id": "5fwrgu4i7k55hl6t8",
+  //     "userID": 1,
+  //     "date": "2020/02/05",
+  //     "roomNumber": 6,
+  //     "roomServiceCharges": []
+  //     },
+  //   ]);
+  //   expect(domUpdates.displayCustomerBookings).to.have.been.called(1);
+  //   expect(domUpdates.displayCustomerBookings).to.have.been.called.with([
+  //     {
+  //     "id": "5fwrgu4i7k55hl6t8",
+  //     "userID": 1,
+  //     "date": "2020/02/05",
+  //     "roomNumber": 6,
+  //     "roomServiceCharges": []
+  //     },
+  //   ]);
+  // })
 
 })
