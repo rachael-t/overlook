@@ -9,9 +9,11 @@ import Manager from './Manager.js'
 
 // Global variables
 const fetcher = new Fetcher();
-let usersData;
-let roomsData;
-let bookingsData;
+// let usersData;
+// let roomsData;
+// let bookingsData;
+let user;
+let manager;
 
 // Event listeners
 $('body').on('click', '#sign-in-button', logUserIn);
@@ -41,6 +43,10 @@ function getAllData() {
   return Promise.all([fetchedUsersData, fetchedRoomsData, fetchedBookingsData]);
 }
 
+function createResortData(data) {
+  user = new User(data[0], data[1], data[2]);
+}
+
 function logUserIn() {
   if ($('#form-text').val() === 'manager' && $('#form-password').val() === 'overlook2020') {
     $('.landing-page').css('display', 'none');
@@ -50,7 +56,7 @@ function logUserIn() {
     $('.customer-page').css('display', 'flex');
     let customerLogin = $('#form-text').val();
     let customerID = parseInt(customerLogin.slice(8))
-    getCustomerInfo(customerID);
+    user.getCustomerData(customerID);
   } else {
     alert('Incorrect username or password. Please try again.')
   }
@@ -87,11 +93,6 @@ function todaysOccupationHandler() {
 };
 
 // Customer page
-
-function getCustomerInfo(customerID) {
-  console.log(typeof customerID)
-  // let customerInfo =  user.getCustomerData(id);
-}
 
 function makeReservationHandler() {
   //call method to determine rooms available
@@ -143,4 +144,4 @@ function testDisplayRoomCard() {
 
 
 
-getAllData().then(data => console.log(data[2]))
+getAllData().then(data => createResortData(data))
