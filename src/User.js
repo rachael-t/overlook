@@ -16,8 +16,12 @@ class User {
     return this.customer;
   }
 
-  getCustomerBookings(id) {
-    let customerBookings = this.bookings.filter(booking => booking.userID === id);
+  getCustomerBookings(id, today, period) {
+    let customerBookings;
+    let allBookings = this.bookings.filter(booking => booking.userID === id);
+    if (period === 'past') {
+      customerBookings = allBookings.filter(booking => booking.date < today)
+    }
     domUpdates.displayCustomerBookings(customerBookings)
     return customerBookings;
   }
