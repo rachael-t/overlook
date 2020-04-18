@@ -1,3 +1,4 @@
+// import $ from 'jquery';
 import bookingsTestData from './bookings-test-data.js';
 import chai from 'chai';
 import domUpdates from '../src/domUpdates.js'
@@ -15,7 +16,7 @@ describe('User', function () {
 
   beforeEach(() => {
     user = new User(usersTestData, roomsTestData, bookingsTestData);
-    chai.spy.on(domUpdates, ['displayCustomerName'], () => true)
+    chai.spy.on(domUpdates, ['displayCustomerName', 'displayCustomerBookings'], () => true)
   });
 
   afterEach(function() {
@@ -45,6 +46,23 @@ describe('User', function () {
 
   it('should get all bookings unique to a customer', function() {
     expect(user.getCustomerBookings(1)).to.deep.equal([
+      {
+      "id": "5fwrgu4i7k55hl6t8",
+      "userID": 1,
+      "date": "2020/02/05",
+      "roomNumber": 6,
+      "roomServiceCharges": []
+      },
+      {
+      "id": "5fwrgu4i7k55hl6td",
+      "userID": 1,
+      "date": "2020/01/31",
+      "roomNumber": 10,
+      "roomServiceCharges": []
+      }
+    ]);
+    expect(domUpdates.displayCustomerBookings).to.have.been.called(1);
+    expect(domUpdates.displayCustomerBookings).to.have.been.called.with([
       {
       "id": "5fwrgu4i7k55hl6t8",
       "userID": 1,
