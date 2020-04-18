@@ -22,7 +22,9 @@ const domUpdates = {
   },
 
   displayCustomerAmountSpent(amount) {
-    $('.message-banner').text(`You have spent a total of $${name} at Riverside Resort`);
+    let roundedAmount =  amount.toFixed(2)
+    $('.rooms-to-book-container').html('');
+    $('.message-banner').text(`You have spent a total of $${roundedAmount} at Riverside Resort`);
   }
 
 };
