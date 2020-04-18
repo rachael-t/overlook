@@ -9,9 +9,11 @@ import Manager from './Manager.js'
 
 // Global variables
 const fetcher = new Fetcher();
-let usersData;
-let roomsData;
-let bookingsData;
+// let usersData;
+// let roomsData;
+// let bookingsData;
+let user;
+let manager;
 
 // Event listeners
 $('body').on('click', '#sign-in-button', logUserIn);
@@ -41,15 +43,23 @@ function getAllData() {
   return Promise.all([fetchedUsersData, fetchedRoomsData, fetchedBookingsData]);
 }
 
+function createResortData(data) {
+  user = new User(data[0], data[1], data[2]);
+}
+
 function logUserIn() {
-  if ($('#form-text').val() === 'manager') {
+  if ($('#form-text').val() === 'manager' && $('#form-password').val() === 'overlook2020') {
     $('.landing-page').css('display', 'none');
     $('.manager-page').css('display', 'flex');
-  } else if ($('#form-text').val() === 'customer') {
+  } else if ($('#form-text').val().includes('customer') && $('#form-password').val() === 'overlook2020') {
     $('.landing-page').css('display', 'none');
     $('.customer-page').css('display', 'flex');
-    testDisplayRoomCard();
-  };
+    let customerLogin = $('#form-text').val();
+    let customerID = parseInt(customerLogin.slice(8))
+    user.getCustomerData(customerID);
+  } else {
+    alert('Incorrect username or password. Please try again.')
+  }
 };
 
 function logUserOut() {
@@ -134,4 +144,4 @@ function testDisplayRoomCard() {
 
 
 
-getAllData().then(data => console.log(data[2]))
+getAllData().then(data => createResortData(data))
