@@ -38,6 +38,7 @@ class User {
       })
       return total;
     }, 0)
+    domUpdates.displayCustomerAmountSpent(amount);
     return amount;
   }
 
