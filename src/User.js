@@ -14,11 +14,12 @@ class User {
     domUpdates.displayCustomerName(this.customer.name)
     return this.customer;
   }
-  //
-  // getCustomerBookings(id) {
-  //
-  // },
-  //
+
+  getCustomerBookings(id) {
+    let customerBookings = this.bookings.filter(booking => booking.userID === id);
+    return customerBookings;
+  }
+
   // getCustomerAmountSpent(id) {
   //
   // },
