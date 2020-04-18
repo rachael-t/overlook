@@ -12,10 +12,17 @@ describe('User', function () {
     user = new User(usersTestData, roomsTestData, bookingsTestData);
   });
 
-  describe('See if the tests are running', function() {
-    it('should return true', function() {
-      expect(true).to.equal(true);
-    });
+  it('should take in all users data', function() {
+    expect(user.users.length).to.equal(5);
   });
+
+  it('should take in all rooms data', function() {
+    expect(user.rooms.length).to.equal(10);
+  });
+
+  it('should take in all bookings data', function() {
+    expect(user.bookings.length).to.equal(10);
+  });
+
 
 })
