@@ -9,12 +9,10 @@ import Manager from './Manager.js'
 
 // Global variables
 const fetcher = new Fetcher();
-// let usersData;
-// let roomsData;
-// let bookingsData;
-let user;
-let manager;
 let customer;
+let manager;
+let today = getTodaysDate();
+let user;
 
 // Event listeners
 $('body').on('click', '#sign-in-button', logUserIn);
@@ -46,6 +44,20 @@ function getAllData() {
 
 function createResortData(data) {
   user = new User(data[0], data[1], data[2]);
+}
+
+function getTodaysDate() {
+  var fullDate = new Date();
+  var twoDigitMonth = fullDate.getMonth() + 1 + "";
+  var twoDigitDate = fullDate.getDate() + "";
+  if (twoDigitMonth.length === 1) {
+    twoDigitMonth = "0" + twoDigitMonth;
+  }
+  if (twoDigitDate.length === 1) {
+    twoDigitDate = "0" + twoDigitDate;
+  }
+  var currentDate = fullDate.getFullYear() + "/" + twoDigitMonth + "/" + twoDigitDate;
+  return currentDate;
 }
 
 function logUserIn() {
@@ -107,14 +119,16 @@ function makeReservationHandler() {
 
 function pastReservationsHandler() {
   console.log(customer)
+  console.log(today)
   //call method to determine previous reservations
-  user.getCustomerBookings(customer.id)
+  user.getCustomerBookings(customer.id, today, 'past')
   // have domUpdates display that info
   console.log('show previous reservation info')
 };
 
 function upcomingReservationsHandler() {
   //call method to determine upcoming reservations
+  // user.getCustomerBookings(customer.id, today, 'future')
   // have domUpdates display that #
   console.log('show upcoming reservation info')
 };
