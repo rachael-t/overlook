@@ -28,10 +28,19 @@ class User {
     return customerBookings;
   }
 
-  // getCustomerAmountSpent(id) {
-  //
-  // },
-  //
+  getCustomerAmountSpent(id) {
+    let allBookings = this.bookings.filter(booking => booking.userID === id);
+    let amount = allBookings.reduce((total, booking) => {
+      this.rooms.forEach(room => {
+        if (room.number === booking.roomNumber) {
+          total += room.costPerNight;
+        }
+      })
+      return total;
+    }, 0)
+    return amount;
+  }
+
   // makeCustomerBooking(date, roomNum) {
   //
   // },
