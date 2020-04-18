@@ -90,6 +90,8 @@ describe('User', function () {
 
   it('should return the total amount spent for a customer', function() {
     expect(user.getCustomerAmountSpent(2)).to.equal(722.60);
+      expect(domUpdates.displayCustomerAmountSpent).to.have.been.called(1);
+      expect(domUpdates.displayCustomerAmountSpent).to.have.been.called.with(722.60);
   })
 
 })
