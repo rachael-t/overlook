@@ -9,6 +9,9 @@ import Manager from './Manager.js'
 
 // Global variables
 const fetcher = new Fetcher();
+let usersData;
+let roomsData;
+let bookingsData;
 
 // Event listeners
 $('body').on('click', '#sign-in-button', logUserIn);
