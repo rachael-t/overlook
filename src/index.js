@@ -4,6 +4,8 @@ import './css/base.scss';
 import './images/turing-logo.png'
 import './images/robson-hatsukami-morgan-qr7tsSwDOg0-unsplash.jpg'
 import Fetcher from './Fetcher.js'
+import User from './User.js'
+import Manager from './Manager.js'
 
 // Global variables
 const fetcher = new Fetcher();
