@@ -24,5 +24,12 @@ describe('User', function () {
     expect(user.bookings.length).to.equal(10);
   });
 
+  it('should identify a customer by their username', function() {
+    expect(user.getCustomerData(1)).to.deep.equal({
+      "id": 1,
+      "name": "Leatha Ullrich"
+    })
+  })
+
 
 })
