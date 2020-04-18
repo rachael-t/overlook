@@ -118,19 +118,11 @@ function makeReservationHandler() {
 };
 
 function pastReservationsHandler() {
-  console.log(customer)
-  console.log(today)
-  //call method to determine previous reservations
   user.getCustomerBookings(customer.id, today, 'past')
-  // have domUpdates display that info
-  console.log('show previous reservation info')
 };
 
 function upcomingReservationsHandler() {
-  //call method to determine upcoming reservations
-  // user.getCustomerBookings(customer.id, today, 'future')
-  // have domUpdates display that #
-  console.log('show upcoming reservation info')
+  user.getCustomerBookings(customer.id, today, 'future')
 };
 
 function totalSpentHandler() {
