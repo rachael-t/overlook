@@ -1,6 +1,7 @@
 import domUpdates from './domUpdates.js'
 import Fetcher from './Fetcher.js'
 
+
 class User {
   constructor(usersData, roomsData, bookingsData) {
     this.users = usersData;
@@ -17,6 +18,7 @@ class User {
 
   getCustomerBookings(id) {
     let customerBookings = this.bookings.filter(booking => booking.userID === id);
+    domUpdates.displayCustomerBookings(customerBookings)
     return customerBookings;
   }
 
