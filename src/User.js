@@ -9,9 +9,10 @@ class User {
     this.customer = null;
   }
 
-  // getCustomerData(id) {
-  //
-  // },
+  getCustomerData(id) {
+    this.customer = this.users.find(user => user.id === id)
+    return this.customer;
+  }
   //
   // getCustomerBookings(id) {
   //
