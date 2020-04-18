@@ -11,6 +11,7 @@ class User {
 
   getCustomerData(id) {
     this.customer = this.users.find(user => user.id === id)
+    domUpdates.displayCustomerName(this.customer.name)
     return this.customer;
   }
   //
