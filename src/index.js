@@ -14,6 +14,7 @@ const fetcher = new Fetcher();
 // let bookingsData;
 let user;
 let manager;
+let customer;
 
 // Event listeners
 $('body').on('click', '#sign-in-button', logUserIn);
@@ -56,7 +57,7 @@ function logUserIn() {
     $('.customer-page').css('display', 'flex');
     let customerLogin = $('#form-text').val();
     let customerID = parseInt(customerLogin.slice(8))
-    user.getCustomerData(customerID);
+    loadCustomerInfo(customerID);
   } else {
     alert('Incorrect username or password. Please try again.')
   }
@@ -93,6 +94,9 @@ function todaysOccupationHandler() {
 };
 
 // Customer page
+function loadCustomerInfo(customerID) {
+  customer = user.getCustomerData(customerID);
+}
 
 function makeReservationHandler() {
   //call method to determine rooms available
@@ -102,7 +106,9 @@ function makeReservationHandler() {
 };
 
 function pastReservationsHandler() {
+  console.log(customer)
   //call method to determine previous reservations
+  user.getCustomerBookings(customer.id)
   // have domUpdates display that info
   console.log('show previous reservation info')
 };
