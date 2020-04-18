@@ -3,8 +3,8 @@ import Fetcher from './Fetcher.js'
 import User from './User.js'
 
 class Manager extends User {
-  constructor() {
-  super(usersData, roomsData, bookingsData, id);
+  constructor(usersData, roomsData, bookingsData) {
+  super(usersData, roomsData, bookingsData);
   }
   //
   // getTodaysRevenue(date) {
