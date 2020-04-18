@@ -16,7 +16,7 @@ describe('User', function () {
 
   beforeEach(() => {
     user = new User(usersTestData, roomsTestData, bookingsTestData);
-    chai.spy.on(domUpdates, ['displayCustomerName', 'displayCustomerBookings'], () => true)
+    chai.spy.on(domUpdates, ['displayCustomerName', 'displayCustomerBookings', 'displayCustomerAmountSpent'], () => true)
   });
 
   afterEach(function() {
