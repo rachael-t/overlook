@@ -126,9 +126,7 @@ function upcomingReservationsHandler() {
 };
 
 function totalSpentHandler() {
-  //call method to determine the total spent for a user
-  // have domUpdates display that #
-  console.log('total spent')
+  user.getCustomerAmountSpent(customer.id)
 };
 
 // this will move and is just a test to make sure the card template for a room looks okay before adding in data and moving over to domUpdates file
