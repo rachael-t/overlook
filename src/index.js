@@ -47,7 +47,7 @@ function logUserIn() {
   if ($('#form-text').val() === 'manager' && $('#form-password').val() === 'overlook2020') {
     $('.landing-page').css('display', 'none');
     $('.manager-page').css('display', 'flex');
-  } else if ($('#form-text').val() === 'customer') {
+  } else if ($('#form-text').val().includes('customer') && $('#form-password').val() === 'overlook2020') {
     $('.landing-page').css('display', 'none');
     $('.customer-page').css('display', 'flex');
     testDisplayRoomCard();
