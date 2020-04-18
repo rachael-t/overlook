@@ -41,8 +41,6 @@ function getAllData() {
   return Promise.all([fetchedUsersData, fetchedRoomsData, fetchedBookingsData]);
 }
 
-// username: manager
-// password: overlook2020
 function logUserIn() {
   if ($('#form-text').val() === 'manager' && $('#form-password').val() === 'overlook2020') {
     $('.landing-page').css('display', 'none');
@@ -50,7 +48,9 @@ function logUserIn() {
   } else if ($('#form-text').val().includes('customer') && $('#form-password').val() === 'overlook2020') {
     $('.landing-page').css('display', 'none');
     $('.customer-page').css('display', 'flex');
-    testDisplayRoomCard();
+    let customerLogin = $('#form-text').val();
+    let customerID = parseInt(customerLogin.slice(8))
+    getCustomerInfo(customerID);
   } else {
     alert('Incorrect username or password. Please try again.')
   }
@@ -87,6 +87,11 @@ function todaysOccupationHandler() {
 };
 
 // Customer page
+
+function getCustomerInfo(customerID) {
+  console.log(typeof customerID)
+  // let customerInfo =  user.getCustomerData(id);
+}
 
 function makeReservationHandler() {
   //call method to determine rooms available
