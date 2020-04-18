@@ -3,7 +3,7 @@ import $ from 'jquery';
 
 const domUpdates = {
   displayCustomerName(name) {
-    $('#customer-welcome').text(`Welcome back ${name}!`);
+    $('.message-banner').text(`Welcome back ${name}!`);
   },
 
   displayCustomerBookings(bookings) {
@@ -19,6 +19,10 @@ const domUpdates = {
           </li>
       `)
     })
+  },
+
+  displayCustomerAmountSpent(amount) {
+    $('.message-banner').text(`You have spent a total of $${name} at Riverside Resort`);
   }
 
 };
