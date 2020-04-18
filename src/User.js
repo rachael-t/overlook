@@ -2,7 +2,7 @@ import domUpdates from './domUpdates.js'
 import Fetcher from './Fetcher.js'
 
 class User {
-  constructor(usersData, roomsData, bookingsData, id) {
+  constructor(usersData, roomsData, bookingsData) {
     this.users = usersData;
     this.rooms = roomsData;
     this.bookings = bookingsData;
