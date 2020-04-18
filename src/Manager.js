@@ -4,9 +4,20 @@ import User from './User.js'
 
 class Manager extends User {
   constructor() {
-  super();
+  super(usersData, roomsData, bookingsData, id);
   }
-
+  //
+  // getTodaysRevenue(date) {
+  //
+  // },
+  //
+  // getTodaysOccupancy(date) {
+  //
+  // },
+  //
+  // cancelBooking(date, roomNum) {
+  //
+  // },
 }
 
 export default Manager;
