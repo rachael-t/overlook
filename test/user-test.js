@@ -88,4 +88,8 @@ describe('User', function () {
     ]);
   })
 
+  it('should return the total amount spent for a customer', function() {
+    expect(user.getCustomerAmountSpent(2)).to.equal(722.60);
+  })
+
 })
