@@ -1,5 +1,4 @@
 import domUpdates from './domUpdates.js'
-import fetcher from './fetcher.js'
 import User from './User.js'
 
 class Manager extends User {
