@@ -13,10 +13,20 @@ describe('Manager', function () {
     manager = new Manager(usersTestData, roomsTestData, bookingsTestData);
   });
 
-  describe('See if the tests are running', function() {
-    it('should return true', function() {
-      expect(true).to.equal(true);
-    });
+  it('should take in all users data', function() {
+    expect(manager.users.length).to.equal(5);
+  });
+
+  it('should take in all rooms data', function() {
+    expect(manager.rooms.length).to.equal(10);
+  });
+
+  it('should take in all bookings data', function() {
+    expect(manager.bookings.length).to.equal(10);
+  });
+
+  it('should calculate the total revenue for today', function() {
+    expect(manager.getTodaysRevenue("2020/02/14")).to.equal(231.46);
   });
 
 })
