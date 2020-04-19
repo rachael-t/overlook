@@ -31,6 +31,12 @@ const domUpdates = {
     let numAvailable = rooms.length;
     $('.rooms-to-book-container').html('');
     $('.message-banner').text(`There are ${numAvailable} rooms available today.`);
+  },
+
+  displayTodaysRevenue(amount) {
+    let roundedAmount =  amount.toFixed(2)
+    $('.rooms-to-book-container').html('');
+    $('.message-banner').text(`Today's total revenue is $${roundedAmount}.`);
   }
 
 };
