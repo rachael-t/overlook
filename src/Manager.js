@@ -23,7 +23,7 @@ class Manager extends User {
 
   getTodaysOccupancy(date) {
     let roomsAvailable = this.getRoomsAvailable(date);
-    let numRoomsBooked = this.rooms.length -roomsAvailable;
+    let numRoomsBooked = this.rooms.length -roomsAvailable.length;
     let occupancy = Math.round((numRoomsBooked /this.rooms.length) * 100);
     domUpdates.displayTodaysOccupancy(occupancy);
     return occupancy;
