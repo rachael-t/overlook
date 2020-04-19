@@ -1,6 +1,4 @@
 import domUpdates from './domUpdates.js'
-import Fetcher from './Fetcher.js'
-
 
 class User {
   constructor(usersData, roomsData, bookingsData) {
@@ -58,9 +56,6 @@ class User {
     return filteredRooms;
   }
 
-  // makeCustomerBooking(date, roomNum) {
-  //
-  // }
 }
 
 export default User;
