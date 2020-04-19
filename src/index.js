@@ -97,9 +97,7 @@ function todaysRevenueHandler() {
 };
 
 function todaysOccupationHandler() {
-  //call method to determine the day's total occupation
-  // have domUpdates display that #
-  console.log('total occupancy')
+  manager.getTodaysOccupancy(today);
 };
 
 // Customer page
