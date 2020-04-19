@@ -37,6 +37,11 @@ const domUpdates = {
     let roundedAmount =  amount.toFixed(2)
     $('.rooms-to-book-container').html('');
     $('.message-banner').text(`Today's total revenue is $${roundedAmount}.`);
+  },
+
+  displayTodaysOccupancy(occupancy) {
+    $('.rooms-to-book-container').html('');
+    $('.message-banner').text(`Riverside Resort is ${occupancy}% occupied today.`);
   }
 
 };
