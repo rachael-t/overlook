@@ -43,17 +43,11 @@ class User {
   }
 
   getRoomsAvailable(date) {
-    let filteredBookings = this.bookings.filter(booking => !booking.date.includes(date));
-    let roomsAvailable = filteredBookings.reduce((list, booking) => {
-      this.rooms.forEach(room => {
-        if (room.number === booking.roomNumber) {
-          if (!list.includes(room)) {
-            list.push(room);
-          }
-        }
-      })
-      return list;
-    }, [])
+    let filteredBookings = this.bookings.filter(booking => booking.date === date).map(booking => booking = booking.roomNumber);
+    let roomsAvailable = this.rooms.filter(room => {
+      return !filteredBookings.includes(room.number)
+    });
+    domUpdates.displayRoomsAvailable(roomsAvailable);
     return roomsAvailable.length;
   }
 
