@@ -9,11 +9,10 @@ import Manager from './Manager.js'
 
 // Global variables
 const fetcher = new Fetcher();
-// let usersData;
-// let roomsData;
-// let bookingsData;
-let user;
+let customer;
 let manager;
+let today = getTodaysDate();
+let user;
 
 // Event listeners
 $('body').on('click', '#sign-in-button', logUserIn);
@@ -47,6 +46,20 @@ function createResortData(data) {
   user = new User(data[0], data[1], data[2]);
 }
 
+function getTodaysDate() {
+  var fullDate = new Date();
+  var twoDigitMonth = fullDate.getMonth() + 1 + "";
+  var twoDigitDate = fullDate.getDate() + "";
+  if (twoDigitMonth.length === 1) {
+    twoDigitMonth = "0" + twoDigitMonth;
+  }
+  if (twoDigitDate.length === 1) {
+    twoDigitDate = "0" + twoDigitDate;
+  }
+  var currentDate = fullDate.getFullYear() + "/" + twoDigitMonth + "/" + twoDigitDate;
+  return currentDate;
+}
+
 function logUserIn() {
   if ($('#form-text').val() === 'manager' && $('#form-password').val() === 'overlook2020') {
     $('.landing-page').css('display', 'none');
@@ -56,7 +69,7 @@ function logUserIn() {
     $('.customer-page').css('display', 'flex');
     let customerLogin = $('#form-text').val();
     let customerID = parseInt(customerLogin.slice(8))
-    user.getCustomerData(customerID);
+    loadCustomerInfo(customerID);
   } else {
     alert('Incorrect username or password. Please try again.')
   }
@@ -93,6 +106,9 @@ function todaysOccupationHandler() {
 };
 
 // Customer page
+function loadCustomerInfo(customerID) {
+  customer = user.getCustomerData(customerID);
+}
 
 function makeReservationHandler() {
   //call method to determine rooms available
@@ -102,21 +118,15 @@ function makeReservationHandler() {
 };
 
 function pastReservationsHandler() {
-  //call method to determine previous reservations
-  // have domUpdates display that info
-  console.log('show previous reservation info')
+  user.getCustomerBookings(customer.id, today, 'past')
 };
 
 function upcomingReservationsHandler() {
-  //call method to determine upcoming reservations
-  // have domUpdates display that #
-  console.log('show upcoming reservation info')
+  user.getCustomerBookings(customer.id, today, 'future')
 };
 
 function totalSpentHandler() {
-  //call method to determine the total spent for a user
-  // have domUpdates display that #
-  console.log('total spent')
+  user.getCustomerAmountSpent(customer.id)
 };
 
 // this will move and is just a test to make sure the card template for a room looks okay before adding in data and moving over to domUpdates file

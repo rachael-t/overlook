@@ -1,6 +1,7 @@
 import domUpdates from './domUpdates.js'
 import Fetcher from './Fetcher.js'
 
+
 class User {
   constructor(usersData, roomsData, bookingsData) {
     this.users = usersData;
@@ -14,15 +15,33 @@ class User {
     domUpdates.displayCustomerName(this.customer.name)
     return this.customer;
   }
-  //
-  // getCustomerBookings(id) {
-  //
-  // },
-  //
-  // getCustomerAmountSpent(id) {
-  //
-  // },
-  //
+
+  getCustomerBookings(id, today, period) {
+    let customerBookings;
+    let allBookings = this.bookings.filter(booking => booking.userID === id);
+    if (period === 'past') {
+      customerBookings = allBookings.filter(booking => booking.date < today)
+    } else if (period === 'future') {
+      customerBookings = allBookings.filter(booking => booking.date > today)
+    }
+    domUpdates.displayCustomerBookings(customerBookings)
+    return customerBookings;
+  }
+
+  getCustomerAmountSpent(id) {
+    let allBookings = this.bookings.filter(booking => booking.userID === id);
+    let amount = allBookings.reduce((total, booking) => {
+      this.rooms.forEach(room => {
+        if (room.number === booking.roomNumber) {
+          total += room.costPerNight;
+        }
+      })
+      return total;
+    }, 0)
+    domUpdates.displayCustomerAmountSpent(amount);
+    return amount;
+  }
+
   // makeCustomerBooking(date, roomNum) {
   //
   // },
