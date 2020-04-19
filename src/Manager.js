@@ -20,11 +20,14 @@ class Manager extends User {
     domUpdates.displayTodaysRevenue(amount);
     return amount;
   }
-  //
-  // getTodaysOccupancy(date) {
-  //
-  // },
-  //
+
+  getTodaysOccupancy(date) {
+    let roomsAvailable = this.getRoomsAvailable(date);
+    let numRoomsBooked = this.rooms.length -roomsAvailable;
+    let occupancy = Math.round((numRoomsBooked /this.rooms.length) * 100);
+    return occupancy;
+  }
+
   // cancelBooking(date, roomNum) {
   //
   // },
