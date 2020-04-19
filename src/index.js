@@ -44,6 +44,7 @@ function getAllData() {
 
 function createResortData(data) {
   user = new User(data[0], data[1], data[2]);
+  manager = new Manager(data[0], data[1], data[2]);
 }
 
 function getTodaysDate() {
@@ -92,9 +93,7 @@ function roomsAvailableHandler() {
 };
 
 function todaysRevenueHandler() {
-  //call method to determine the day's total revenue
-  // have domUpdates display that #
-  console.log('total revenue')
+  manager.getTodaysRevenue(today);
 };
 
 function todaysOccupationHandler() {
