@@ -16,7 +16,7 @@ describe('Manager', function () {
 
   beforeEach(() => {
     manager = new Manager(usersTestData, roomsTestData, bookingsTestData);
-    chai.spy.on(domUpdates, ['displayTodaysRevenue'], () => true)
+    chai.spy.on(domUpdates, ['displayTodaysRevenue', 'displayRoomsAvailable', 'displayTodaysOccupancy'], () => true)
   });
 
   afterEach(function() {
@@ -42,7 +42,9 @@ describe('Manager', function () {
   });
 
   it('should calculate the total occupancy for today', function() {
-    expect(manager.getTodaysRevenue("2020/02/14")).to.equal(10);
+    expect(manager.getTodaysOccupancy("2020/02/14")).to.equal(10);
+    expect(domUpdates.displayTodaysOccupancy).to.have.been.called(1);
+    expect(domUpdates.displayTodaysOccupancy).to.have.been.called.with(10);
   });
 
 })
