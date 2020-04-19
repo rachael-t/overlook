@@ -83,7 +83,6 @@ function logUserOut() {
 };
 
 // Manager page
-
 function searchUserInfo() {
   console.log('Searched user info should appear')
 };
@@ -123,30 +122,6 @@ function upcomingReservationsHandler() {
 function totalSpentHandler() {
   user.getCustomerAmountSpent(customer.id)
 };
-
-// this will move and is just a test to make sure the card template for a room looks okay before adding in data and moving over to domUpdates file
-function testDisplayRoomCard() {
-  $('.rooms-to-book-container').prepend(
-  `
-      <li class="room-card" id="">
-        <p class="room-card-title" id="">Room Name</p>
-        <div class="room-card-details-container">
-            <p class="room-card-details">Room Type: residential suite</p>
-            <p class="room-card-details">Does it Have a Bidet: true</p>
-            <p class="room-card-details">Bed Size: queen</p>
-            <p class="room-card-details">Number of Beds: 1</p>
-            <p class="room-card-details">Cost Per Night: $358.4</p>
-            <button type="submit" name="button" class="book-room-btn">Book Room
-            </button>
-        </div>
-      </li>
-  `)
-}
-
-
-
-
-
 
 
 getAllData().then(data => createResortData(data))
