@@ -56,7 +56,7 @@ const domUpdates = {
     rooms.forEach(room => {
       $('.rooms-to-book-container').append(
         `
-            <li class="room-card" id="${room.number}">
+            <li class="room-card">
               <p class="room-card-title">Room ${room.number}</p>
               <div class="room-card-details-container">
                   <p class="room-card-details">Room Type: ${room.roomType}</p>
@@ -105,22 +105,3 @@ const domUpdates = {
 };
 
 export default domUpdates;
-
-//Room Card:
-
-// $('.rooms-to-book-container').prepend(
-// `
-//     <li class="room-card" id="">
-//       <p class="room-card-title" id="">Room Name</p>
-//       <div class="room-card-details-container">
-//           <p class="room-card-details">Room Type: residential suite</p>
-//           <p class="room-card-details">Does it Have a Bidet: true</p>
-//           <p class="room-card-details">Bed Size: queen</p>
-//           <p class="room-card-details">Number of Beds: 1</p>
-//           <p class="room-card-details">Cost Per Night: $358.4</p>
-//           <button type="submit" name="button" class="book-room-btn">Book Room
-//           </button>
-//       </div>
-//     </li>
-// `)
-// }
