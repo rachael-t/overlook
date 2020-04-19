@@ -1,5 +1,5 @@
 import domUpdates from './domUpdates.js'
-import Fetcher from './Fetcher.js'
+import fetcher from './fetcher.js'
 import User from './User.js'
 
 class Manager extends User {
@@ -29,9 +29,6 @@ class Manager extends User {
     return occupancy;
   }
 
-  // cancelBooking(date, roomNum) {
-  //
-  // },
 }
 
 export default Manager;
