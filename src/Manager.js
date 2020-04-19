@@ -6,10 +6,19 @@ class Manager extends User {
   constructor(usersData, roomsData, bookingsData) {
   super(usersData, roomsData, bookingsData);
   }
-  //
-  // getTodaysRevenue(date) {
-  //
-  // },
+
+  getTodaysRevenue(date) {
+    let allBookings = this.bookings.filter(booking => booking.date === date);
+    let amount = allBookings.reduce((total, booking) => {
+      this.rooms.forEach(room => {
+        if (room.number === booking.roomNumber) {
+          total += room.costPerNight;
+        }
+      })
+      return total;
+    }, 0)
+    return amount;
+  }
   //
   // getTodaysOccupancy(date) {
   //
