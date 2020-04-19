@@ -15,9 +15,10 @@ const domUpdates = {
     this.addDatePicker();
   },
 
-  clearDatePicker() {
+  resetCategoryDisplay() {
     $('.message-banner').html('');
     $('.customer-filter-date').html('');
+    $('.customer-filter-options').html('');
   },
 
   displayCustomerName(name) {
@@ -38,7 +39,7 @@ const domUpdates = {
       `)
     })
     if (bookings.length === 0) {
-      $('.message-banner').text(`You do not have any upcoming reservations.`);
+      $('.message-banner').text(`You do not have any reservations for this time period.`);
     }
   },
 
@@ -69,7 +70,25 @@ const domUpdates = {
             </li>
         `
       )
-    })
+    });
+    this.displayFilterOptions();
+    if (rooms.length === 0) {
+      this.resetCategoryDisplay();
+      $('.message-banner').text(`We sincerely apologize, we do not have anything matching those selections available. Please choose a different date and/or room type. Thank you.`);
+    }
+  },
+
+  displayFilterOptions() {
+    $('.customer-filter-options').html('');
+    $('.customer-filter-options').prepend(`
+      <label>Filter by Room Type:</label>
+      <select class='room-type-selection'>
+        <option value='residential suite'>residential suite</option>
+        <option value='suite'>suite</option>
+        <option value='single room'>single room</option>
+        <option value='junior suite'>junior suite</option>
+      </select>
+      `)
   },
 
   displayTodaysRevenue(amount) {
