@@ -16,7 +16,8 @@ class Manager extends User {
         }
       })
       return total;
-    }, 0)
+    }, 0);
+    domUpdates.displayTodaysRevenue(amount);
     return amount;
   }
   //
