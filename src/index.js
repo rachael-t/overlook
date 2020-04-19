@@ -6,6 +6,7 @@ import './images/robson-hatsukami-morgan-qr7tsSwDOg0-unsplash.jpg'
 import Fetcher from './Fetcher.js'
 import User from './User.js'
 import Manager from './Manager.js'
+import domUpdates from './domUpdates.js'
 
 // Global variables
 const fetcher = new Fetcher();
@@ -24,6 +25,7 @@ $('body').on('click', '#manager-todays-revenue', todaysRevenueHandler);
 $('body').on('click', '#manager-todays-occupation', todaysOccupationHandler);
   // Customer event liseners
 $('body').on('click', '#customer-make-reservation', makeReservationHandler);
+$("body").on('change', "#datepicker", reservationDateHandler);
 $('body').on('click', '#customer-past-reservations', pastReservationsHandler);
 $('body').on('click', '#customer-upcoming-resverations', upcomingReservationsHandler);
 $('body').on('click', '#customer-total-spent', totalSpentHandler);
@@ -105,21 +107,28 @@ function loadCustomerInfo(customerID) {
 }
 
 function makeReservationHandler() {
-  //call method to determine rooms available
-  // have domUpdates display that info
-  // also need to display buttons to filter rooms
+  domUpdates.displayDatePicker();
   console.log('show rooms to make reservation')
 };
 
+function reservationDateHandler() {
+  let date = $("#datepicker").val();
+  user.getRoomsAvailable(date);
+}
+
+
 function pastReservationsHandler() {
+  domUpdates.clearDatePicker();
   user.getCustomerBookings(customer.id, today, 'past')
 };
 
 function upcomingReservationsHandler() {
+  domUpdates.clearDatePicker();
   user.getCustomerBookings(customer.id, today, 'future')
 };
 
 function totalSpentHandler() {
+  domUpdates.clearDatePicker();
   user.getCustomerAmountSpent(customer.id)
 };
 
