@@ -25,6 +25,12 @@ const domUpdates = {
     let roundedAmount =  amount.toFixed(2)
     $('.rooms-to-book-container').html('');
     $('.message-banner').text(`You have spent a total of $${roundedAmount} at Riverside Resort`);
+  },
+
+  displayRoomsAvailable(rooms) {
+    let numAvailable = rooms.length;
+    $('.rooms-to-book-container').html('');
+    $('.message-banner').text(`There are ${numAvailable} rooms available today.`);
   }
 
 };
