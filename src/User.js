@@ -22,7 +22,7 @@ class User {
     if (period === 'past') {
       customerBookings = allBookings.filter(booking => booking.date < today)
     } else if (period === 'future') {
-      customerBookings = allBookings.filter(booking => booking.date > today)
+      customerBookings = allBookings.filter(booking => booking.date >= today)
     }
     domUpdates.displayCustomerBookings(customerBookings)
     return customerBookings;
@@ -42,13 +42,18 @@ class User {
     return amount;
   }
 
+  getRoomsAvailable(date) {
+    let filteredBookings = this.bookings.filter(booking => booking.date === date).map(booking => booking = booking.roomNumber);
+    let roomsAvailable = this.rooms.filter(room => {
+      return !filteredBookings.includes(room.number)
+    });
+    domUpdates.displayRoomsAvailable(roomsAvailable);
+    return roomsAvailable.length;
+  }
+
   // makeCustomerBooking(date, roomNum) {
   //
-  // },
-  //
-  // getRoomsAvailable(date) {
-  //
-  // },
+  // }
 }
 
 export default User;
