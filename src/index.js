@@ -88,9 +88,7 @@ function searchUserInfo() {
 };
 
 function roomsAvailableHandler() {
-  //call method to determine # rooms available
-  // have domUpdates display that #
-  console.log('# rooms available')
+  user.getRoomsAvailable(today);
 };
 
 function todaysRevenueHandler() {
