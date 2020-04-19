@@ -41,4 +41,8 @@ describe('Manager', function () {
     expect(domUpdates.displayTodaysRevenue).to.have.been.called.with(231.46);
   });
 
+  it('should calculate the total occupancy for today', function() {
+    expect(manager.getTodaysRevenue("2020/02/14")).to.equal(10);
+  });
+
 })
