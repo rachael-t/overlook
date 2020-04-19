@@ -48,7 +48,14 @@ class User {
       return !filteredBookings.includes(room.number)
     });
     domUpdates.displayRoomsAvailable(roomsAvailable);
-    return roomsAvailable.length;
+    return roomsAvailable;
+  }
+
+  filterRoomsAvailable(date, roomType) {
+    let roomsAvailable = this.getRoomsAvailable(date);
+    let filteredRooms = roomsAvailable.filter(room => room.roomType === roomType);
+    domUpdates.displayRoomsAvailable(filteredRooms);
+    return filteredRooms;
   }
 
   // makeCustomerBooking(date, roomNum) {
