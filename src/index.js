@@ -25,7 +25,8 @@ $('body').on('click', '#manager-todays-revenue', todaysRevenueHandler);
 $('body').on('click', '#manager-todays-occupation', todaysOccupationHandler);
   // Customer event liseners
 $('body').on('click', '#customer-make-reservation', makeReservationHandler);
-$("body").on('change', "#datepicker", reservationDateHandler);
+$('body').on('change', "#datepicker", reservationDateHandler);
+$('body').on('change', '.room-type-selection', reservationFilterHandler)
 $('body').on('click', '#customer-past-reservations', pastReservationsHandler);
 $('body').on('click', '#customer-upcoming-resverations', upcomingReservationsHandler);
 $('body').on('click', '#customer-total-spent', totalSpentHandler);
@@ -114,21 +115,26 @@ function makeReservationHandler() {
 function reservationDateHandler() {
   let date = $("#datepicker").val();
   user.getRoomsAvailable(date);
-}
+};
 
+function reservationFilterHandler() {
+  let date = $("#datepicker").val();
+  let roomType = $('.room-type-selection').val();
+  user.filterRoomsAvailable(date, roomType);
+};
 
 function pastReservationsHandler() {
-  domUpdates.clearDatePicker();
+  domUpdates.resetCategoryDisplay();
   user.getCustomerBookings(customer.id, today, 'past')
 };
 
 function upcomingReservationsHandler() {
-  domUpdates.clearDatePicker();
+  domUpdates.resetCategoryDisplay();
   user.getCustomerBookings(customer.id, today, 'future')
 };
 
 function totalSpentHandler() {
-  domUpdates.clearDatePicker();
+  domUpdates.resetCategoryDisplay();
   user.getCustomerAmountSpent(customer.id)
 };
 
