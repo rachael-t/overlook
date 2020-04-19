@@ -94,4 +94,10 @@ describe('User', function () {
     expect(domUpdates.displayCustomerAmountSpent).to.have.been.called.with(722.60);
   })
 
+  it('should return the total rooms available for the current date', function() {
+    expect(user.getRoomsAvailable("2020/02/14")).to.equal(9);
+    // expect(domUpdates.displayCustomerAmountSpent).to.have.been.called(1);
+    // expect(domUpdates.displayCustomerAmountSpent).to.have.been.called.with(722.60);
+  })
+
 })
