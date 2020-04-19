@@ -64,7 +64,7 @@ const domUpdates = {
                   <p class="room-card-details">Bed Size: ${room.bedSize}</p>
                   <p class="room-card-details">Number of Beds: ${room.numBeds}</p>
                   <p class="room-card-details">Cost Per Night: $${room.costPerNight}</p>
-                  <button type="submit" name="button" class="book-room-btn">Book Room
+                  <button type="submit" name="button" class="book-room-btn" id="${room.number}">Book Room
                   </button>
               </div>
             </li>
