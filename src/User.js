@@ -21,6 +21,8 @@ class User {
       customerBookings = allBookings.filter(booking => booking.date < today)
     } else if (period === 'future') {
       customerBookings = allBookings.filter(booking => booking.date >= today)
+    } else if (period === 'all') {
+      customerBookings = allBookings;
     }
     domUpdates.displayCustomerBookings(customerBookings)
     return customerBookings;
