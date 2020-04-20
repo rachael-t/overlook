@@ -11,6 +11,7 @@ import domUpdates from './domUpdates.js'
 // Global variables
 let customer;
 let manager;
+let searchedUserId;
 let today = getTodaysDate();
 let user;
 
@@ -18,6 +19,10 @@ let user;
 $('body').on('click', '#sign-in-button', logUserIn);
 $('body').on('click', '.logout-btn', logUserOut);
   // Manager page event listners
+$('#customer-name-selection').change(function() {
+  let grabbedId = $(this).children(":selected").attr("id");
+  searchedUserId = parseInt(grabbedId);
+});
 $('body').on('click', '#customer-search-button', searchUserInfo);
 $('body').on('click', '#manager-rooms-available', roomsAvailableHandler);
 $('body').on('click', '#manager-todays-revenue', todaysRevenueHandler);
@@ -88,7 +93,12 @@ function logUserOut() {
 
 // Manager page
 function searchUserInfo() {
-
+  let name = $("#customer-name-selection").val();
+  let pastBookings = manager.getCustomerBookings(searchedUserId, today, 'past').length;
+  let futureBookings = manager.getCustomerBookings(searchedUserId, today, 'future').length;
+  let allBookings = pastBookings + futureBookings;
+  let amount = manager.getCustomerAmountSpent(searchedUserId).toFixed(2);
+  domUpdates.displayCustomerDetails(name, allBookings, amount)
 };
 
 function roomsAvailableHandler() {
