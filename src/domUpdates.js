@@ -102,6 +102,12 @@ const domUpdates = {
     $('.message-banner').text(`Riverside Resort is ${occupancy}% occupied today.`);
   },
 
+  addNamesToUserSearch(customerList) {
+    customerList.forEach(customer => {
+      $('#customer-name-selection').append(`<option id="${customer.id}" value="${customer.name}">${customer.name}</option>`)
+    });
+  },
+
 };
 
 export default domUpdates;
