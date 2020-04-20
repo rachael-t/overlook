@@ -104,9 +104,13 @@ const domUpdates = {
 
   addNamesToUserSearch(customerList) {
     customerList.forEach(customer => {
-      $('#customer-name-selection').append(`<option id="${customer.id}" value="${customer.name}">${customer.name}</option>`)
+      $('#customer-name-selection').append(`<option class="name-list" id="${customer.id}" value="${customer.name}">${customer.name}</option>`)
     });
   },
+
+  displayCustomerDetails(name, allBookings, amount) {
+    $('.message-banner').text(`${name}'s Profile: ${allBookings} reservations made and $${amount} spent`);
+  }
 
 };
 
