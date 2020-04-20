@@ -93,16 +93,15 @@ function logUserOut() {
 
 // Manager page
 function searchUserInfo() {
+  user.getCustomerData(searchedUserId);
   let name = $("#customer-name-selection").val();
-  let pastBookings = manager.getCustomerBookings(searchedUserId, today, 'past').length;
-  let futureBookings = manager.getCustomerBookings(searchedUserId, today, 'future').length;
-  let allBookings = pastBookings + futureBookings;
   let amount = manager.getCustomerAmountSpent(searchedUserId).toFixed(2);
-  domUpdates.displayCustomerDetails(name, allBookings, amount)
+  let allBookings = manager.getCustomerBookings(searchedUserId, today, 'all').length;
+  domUpdates.displayCustomerDetails(name, allBookings, amount);
 };
 
 function roomsAvailableHandler() {
-  user.getRoomsAvailable(today);
+  manager.getRoomsAvailable(today);
 };
 
 function todaysRevenueHandler() {
@@ -150,7 +149,12 @@ function totalSpentHandler() {
 
 function requestBooking() {
   let usersID = user.customer.id
-  let dateRequested = $("#datepicker").val();
+  let dateRequested;
+  if (!$("#datepicker").val()) {
+    dateRequested = today;
+  } else {
+    dateRequested = $("#datepicker").val()
+  }
   let room = parseInt($(".book-room-btn").attr('id'));
   fetcher.postReservation(usersID, dateRequested, room);
   alert('Reservation has been booked successfully.');
