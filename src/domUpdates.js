@@ -4,7 +4,8 @@ import flatpickr from "flatpickr";
 const domUpdates = {
   addDatePicker() {
     flatpickr("#datepicker", {
-      dateFormat: "Y/m/d"
+      dateFormat: "Y/m/d",
+      minDate: "today"
     });
   },
 
