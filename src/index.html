@@ -39,7 +39,9 @@
       <nav>
         <ul class="nav">
           <li id="customer-search">
-            <input id="search-customer" placeholder="Customer Search" aria-label="Enter a customers name" type="text"></input>
+            <select id="customer-name-selection" list="customer-names" placeholder="Customer Search" aria-label="Select a customers name">
+              <option disabled selected value> Select a Customer</option>
+            </select>
             <button type="submit" name="button" id="customer-search-button">Search</button>
           </li>
           <li>
