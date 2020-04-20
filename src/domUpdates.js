@@ -26,6 +26,7 @@ const domUpdates = {
   },
 
   displayCustomerBookings(bookings) {
+    $('.message-banner').html('');
     $('.rooms-to-book-container').html('');
     bookings.forEach(booking => {
       $('.rooms-to-book-container').append(
@@ -110,7 +111,32 @@ const domUpdates = {
 
   displayCustomerDetails(name, allBookings, amount) {
     $('.message-banner').text(`${name}'s Profile: ${allBookings} reservations made and $${amount} spent`);
-  }
+  },
+
+  addCancellationToMenuBar() {
+    $('.category-container').append(`<li id='manager-cancellation'><button type='submit' name='cancellation-page'>Cancel Customer Reservation</button></li>`)
+  },
+
+  displayCancellationOptions(bookings) {
+      $('.message-banner').html('');
+      $('.rooms-to-book-container').html('');
+      bookings.forEach(booking => {
+        $('.rooms-to-book-container').append(
+          `
+            <li class="room-card" id="${booking.id}">
+              <p class="room-card-title">Room ${booking.roomNumber}</p>
+              <div class="room-card-details-container">
+                  <p class="room-card-details">Date of Reservation:</br>${booking.date}</p>
+                  <button type="submit" name="button" class="cancel-room-btn" id="${booking.id}">Cancel Reservation
+                  </button>
+              </div>
+            </li>
+        `)
+      })
+      if (bookings.length === 0) {
+        $('.message-banner').text(`This customer does not have any upcoming reservations.`);
+      }
+  },
 
 };
 
