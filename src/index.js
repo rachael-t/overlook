@@ -3,12 +3,12 @@ import $ from 'jquery';
 import './css/base.scss';
 import './images/turing-logo.png'
 import './images/robson-hatsukami-morgan-qr7tsSwDOg0-unsplash.jpg'
-import Fetcher from './Fetcher.js'
+import fetcher from './fetcher.js'
 import User from './User.js'
 import Manager from './Manager.js'
+import domUpdates from './domUpdates.js'
 
 // Global variables
-const fetcher = new Fetcher();
 let customer;
 let manager;
 let today = getTodaysDate();
@@ -24,6 +24,9 @@ $('body').on('click', '#manager-todays-revenue', todaysRevenueHandler);
 $('body').on('click', '#manager-todays-occupation', todaysOccupationHandler);
   // Customer event liseners
 $('body').on('click', '#customer-make-reservation', makeReservationHandler);
+$('body').on('change', "#datepicker", reservationDateHandler);
+$('body').on('change', '.room-type-selection', reservationFilterHandler);
+$('body').on('click', ".book-room-btn", requestBooking);
 $('body').on('click', '#customer-past-reservations', pastReservationsHandler);
 $('body').on('click', '#customer-upcoming-resverations', upcomingReservationsHandler);
 $('body').on('click', '#customer-total-spent', totalSpentHandler);
@@ -84,7 +87,7 @@ function logUserOut() {
 
 // Manager page
 function searchUserInfo() {
-  console.log('Searched user info should appear')
+
 };
 
 function roomsAvailableHandler() {
@@ -105,23 +108,41 @@ function loadCustomerInfo(customerID) {
 }
 
 function makeReservationHandler() {
-  //call method to determine rooms available
-  // have domUpdates display that info
-  // also need to display buttons to filter rooms
-  console.log('show rooms to make reservation')
+  domUpdates.displayDatePicker();
+};
+
+function reservationDateHandler() {
+  let date = $("#datepicker").val();
+  user.getRoomsAvailable(date);
+};
+
+function reservationFilterHandler() {
+  let date = $("#datepicker").val();
+  let roomType = $('.room-type-selection').val();
+  user.filterRoomsAvailable(date, roomType);
 };
 
 function pastReservationsHandler() {
+  domUpdates.resetCategoryDisplay();
   user.getCustomerBookings(customer.id, today, 'past')
 };
 
 function upcomingReservationsHandler() {
+  domUpdates.resetCategoryDisplay();
   user.getCustomerBookings(customer.id, today, 'future')
 };
 
 function totalSpentHandler() {
+  domUpdates.resetCategoryDisplay();
   user.getCustomerAmountSpent(customer.id)
 };
 
+function requestBooking() {
+  let usersID = user.customer.id
+  let dateRequested = $("#datepicker").val();
+  let room = parseInt($(".book-room-btn").attr('id'));
+  fetcher.postReservation(usersID, dateRequested, room);
+  alert('Reservation has been booked successfully.');
+}
 
 getAllData().then(data => createResortData(data))

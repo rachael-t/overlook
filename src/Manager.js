@@ -1,5 +1,4 @@
 import domUpdates from './domUpdates.js'
-import Fetcher from './Fetcher.js'
 import User from './User.js'
 
 class Manager extends User {
@@ -23,15 +22,12 @@ class Manager extends User {
 
   getTodaysOccupancy(date) {
     let roomsAvailable = this.getRoomsAvailable(date);
-    let numRoomsBooked = this.rooms.length -roomsAvailable;
+    let numRoomsBooked = this.rooms.length -roomsAvailable.length;
     let occupancy = Math.round((numRoomsBooked /this.rooms.length) * 100);
     domUpdates.displayTodaysOccupancy(occupancy);
     return occupancy;
   }
 
-  // cancelBooking(date, roomNum) {
-  //
-  // },
 }
 
 export default Manager;

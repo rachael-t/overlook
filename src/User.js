@@ -1,6 +1,4 @@
 import domUpdates from './domUpdates.js'
-import Fetcher from './Fetcher.js'
-
 
 class User {
   constructor(usersData, roomsData, bookingsData) {
@@ -48,12 +46,16 @@ class User {
       return !filteredBookings.includes(room.number)
     });
     domUpdates.displayRoomsAvailable(roomsAvailable);
-    return roomsAvailable.length;
+    return roomsAvailable;
   }
 
-  // makeCustomerBooking(date, roomNum) {
-  //
-  // }
+  filterRoomsAvailable(date, roomType) {
+    let roomsAvailable = this.getRoomsAvailable(date);
+    let filteredRooms = roomsAvailable.filter(room => room.roomType === roomType);
+    domUpdates.displayRoomsAvailable(filteredRooms);
+    return filteredRooms;
+  }
+
 }
 
 export default User;
