@@ -28,6 +28,11 @@ class Manager extends User {
     return occupancy;
   }
 
+  getAllCustomerNames() {
+    let nameList = this.users.map(user => user = user.name)
+    return nameList;
+  }
+
 }
 
 export default Manager;
