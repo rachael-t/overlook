@@ -47,4 +47,14 @@ describe('Manager', function () {
     expect(domUpdates.displayTodaysOccupancy).to.have.been.called.with(10);
   });
 
+  it('should obtain a list of all customer names', function() {
+    expect(manager.getAllCustomerNames()).to.deep.equal([
+      "Leatha Ullrich",
+      "Rocio Schuster",
+      "Kelvin Schiller",
+      "Kennedi Emard",
+      "Rhiannon Little"
+    ]);
+  })
+
 })
