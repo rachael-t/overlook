@@ -29,6 +29,7 @@ $('body').on('click', '#manager-rooms-available', roomsAvailableHandler);
 $('body').on('click', '#manager-todays-revenue', todaysRevenueHandler);
 $('body').on('click', '#manager-todays-occupation', todaysOccupationHandler);
 $('body').on('click', '#manager-cancellation', cancellationPageHandler);
+$('body').on('click', '.cancel-room-btn', requestCancellation);
 
   // Customer event liseners
 $('body').on('click', '#customer-make-reservation', makeReservationHandler);
@@ -59,16 +60,16 @@ function createResortData(data) {
 }
 
 function getTodaysDate() {
-  var fullDate = new Date();
-  var twoDigitMonth = fullDate.getMonth() + 1 + "";
-  var twoDigitDate = fullDate.getDate() + "";
+  let fullDate = new Date();
+  let twoDigitMonth = fullDate.getMonth() + 1 + "";
+  let twoDigitDate = fullDate.getDate() + "";
   if (twoDigitMonth.length === 1) {
     twoDigitMonth = "0" + twoDigitMonth;
   }
   if (twoDigitDate.length === 1) {
     twoDigitDate = "0" + twoDigitDate;
   }
-  var currentDate = fullDate.getFullYear() + "/" + twoDigitMonth + "/" + twoDigitDate;
+  let currentDate = fullDate.getFullYear() + "/" + twoDigitMonth + "/" + twoDigitDate;
   return currentDate;
 }
 
@@ -157,7 +158,10 @@ function totalSpentHandler() {
 };
 
 function requestBooking() {
-  let usersID = user.customer.id
+  if (!$("#customer-name-selection").val()) {
+    alert('Please select a customer to make a reservation.');
+  }
+  let usersID = user.customer.id;
   let dateRequested;
   if (!$("#datepicker").val()) {
     dateRequested = today;
@@ -165,8 +169,18 @@ function requestBooking() {
     dateRequested = $("#datepicker").val()
   }
   let room = parseInt($(".book-room-btn").attr('id'));
-  fetcher.postReservation(usersID, dateRequested, room);
-  alert('Reservation has been booked successfully.');
-}
+  let reservation = fetcher.postReservation(usersID, dateRequested, room);
+  Promise.all([reservation]).then(() => {
+    alert('Reservation has been booked successfully.');
+  })
+};
+
+function requestCancellation() {
+  let bookingID = parseInt($('.cancel-room-btn').attr('id'));
+  let cancellation = fetcher.cancelReservation(bookingID);
+  Promise.all([cancellation]).then(() => {
+    alert('Reservation has been cancelled successfully.');
+  })
+};
 
 getAllData().then(data => createResortData(data))
