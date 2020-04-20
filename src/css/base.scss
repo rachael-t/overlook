@@ -77,7 +77,6 @@ header {
   width: 250px;
   background-color: transparent;
   border: none;
-  outline: none;
   border-bottom: 1.5px solid;
   border-bottom-color: $border-bottom-color;
   border-radius: 1px;
@@ -96,7 +95,6 @@ header {
 #sign-in-button {
   padding: 20px 30px;
   margin-top: 30px;
-  outline: none;
   border: none;
   font-size: medium;
   font-weight: 600;
@@ -121,13 +119,11 @@ input {
   padding: 10px 15px;
   font-size: 120%;
   font-weight: 300;
-  outline: none;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
 }
 
 button {
   border-radius: 5px;
-  outline: none;
   cursor: pointer;
   // opacity: .5;
 }
@@ -226,11 +222,10 @@ button:hover {
   margin-inline-end: 0px;
 }
 
-.book-room-btn {
+.book-room-btn, .cancel-room-btn {
   padding: 20px 30px;
   margin-top: 30px;
   margin-bottom: 30px;
-  outline: none;
   border: none;
   font-size: medium;
   font-weight: 600;
