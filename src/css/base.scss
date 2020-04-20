@@ -167,15 +167,6 @@ button:hover {
   cursor: pointer;
 }
 
-// #manager-rooms-available, #manager-todays-revenue, #manager-todays-occupation:hover {
-//   font-weight: bold;
-//   transform: translateY(5px);
-// }
-//
-// #manager-rooms-available, #manager-todays-revenue, #manager-todays-occupation:active {
-//   font-weight: bold;
-// }
-
 // Customer page
 #customer-make-reservation, #customer-past-reservations, #customer-upcoming-resverations, #customer-total-spent {
   cursor: pointer;
@@ -200,7 +191,6 @@ button:hover {
   background-color: $background-white;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.03);
   border-radius: 5px;
-  cursor: pointer;
   filter: opacity(.8);
 }
 
