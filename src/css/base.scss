@@ -160,7 +160,7 @@ button:hover {
   margin-top: 50px;
 }
 
-// Manager page
+// Details page
 .category-container {
   display: flex;
   flex-wrap: wrap;
@@ -171,12 +171,8 @@ button:hover {
   background-color: $background-medium;
 }
 
-#manager-rooms-available, #manager-todays-revenue, #manager-todays-occupation, #manager-cancellation {
-  cursor: pointer;
-}
-
-// Customer page
-#customer-make-reservation, #customer-past-reservations, #customer-upcoming-resverations, #customer-total-spent {
+// Menu bar
+.menu-item {
   cursor: pointer;
 }
 
