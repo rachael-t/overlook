@@ -80,6 +80,11 @@ const domUpdates = {
     }
   },
 
+  displayFullyBookedMessage() {
+    $('.message-banner').html(``);
+    $('.message-banner').text(`Riverside Resort is fully booked today!`);
+  },
+
   displayFilterOptions() {
     $('.customer-filter-options').html('');
     $('.customer-filter-options').prepend(`
@@ -112,10 +117,6 @@ const domUpdates = {
 
   displayCustomerDetails(name, allBookings, amount) {
     $('.message-banner').text(`${name}'s Profile: ${allBookings} reservations made and $${amount} spent`);
-  },
-
-  addCancellationToMenuBar() {
-    $('.category-container').append(`<li id='manager-cancellation'><button type='submit' name='cancellation-page'>Cancel Customer Reservation</button></li>`)
   },
 
   displayCancellationOptions(bookings) {
