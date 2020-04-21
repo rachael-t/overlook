@@ -11,22 +11,31 @@ import domUpdates from './domUpdates.js'
 // Global variables
 let customer;
 let manager;
+let searchedUserId;
 let today = getTodaysDate();
 let user;
 
 // Event listeners
 $('body').on('click', '#sign-in-button', logUserIn);
 $('body').on('click', '.logout-btn', logUserOut);
+
   // Manager page event listners
-$('body').on('click', '#customer-search-button', searchUserInfo);
+$('#customer-name-selection').change(function() {
+  let grabbedId = $(this).children(':selected').attr('id');
+  searchedUserId = parseInt(grabbedId);
+  });
+$('body').on('click', '#customer-search-button', searchUserHandler);
 $('body').on('click', '#manager-rooms-available', roomsAvailableHandler);
 $('body').on('click', '#manager-todays-revenue', todaysRevenueHandler);
 $('body').on('click', '#manager-todays-occupation', todaysOccupationHandler);
+$('body').on('click', '#manager-cancellation', cancellationPageHandler);
+$('body').on('click', '.cancel-room-btn', requestCancellation);
+
   // Customer event liseners
 $('body').on('click', '#customer-make-reservation', makeReservationHandler);
-$('body').on('change', "#datepicker", reservationDateHandler);
+$('body').on('change', '#datepicker', reservationDateHandler);
 $('body').on('change', '.room-type-selection', reservationFilterHandler);
-$('body').on('click', ".book-room-btn", requestBooking);
+$('body').on('click', '.book-room-btn', requestBooking);
 $('body').on('click', '#customer-past-reservations', pastReservationsHandler);
 $('body').on('click', '#customer-upcoming-resverations', upcomingReservationsHandler);
 $('body').on('click', '#customer-total-spent', totalSpentHandler);
@@ -51,16 +60,16 @@ function createResortData(data) {
 }
 
 function getTodaysDate() {
-  var fullDate = new Date();
-  var twoDigitMonth = fullDate.getMonth() + 1 + "";
-  var twoDigitDate = fullDate.getDate() + "";
+  let fullDate = new Date();
+  let twoDigitMonth = fullDate.getMonth() + 1 + "";
+  let twoDigitDate = fullDate.getDate() + "";
   if (twoDigitMonth.length === 1) {
     twoDigitMonth = "0" + twoDigitMonth;
   }
   if (twoDigitDate.length === 1) {
     twoDigitDate = "0" + twoDigitDate;
   }
-  var currentDate = fullDate.getFullYear() + "/" + twoDigitMonth + "/" + twoDigitDate;
+  let currentDate = fullDate.getFullYear() + "/" + twoDigitMonth + "/" + twoDigitDate;
   return currentDate;
 }
 
@@ -68,6 +77,7 @@ function logUserIn() {
   if ($('#form-text').val() === 'manager' && $('#form-password').val() === 'overlook2020') {
     $('.landing-page').css('display', 'none');
     $('.manager-page').css('display', 'flex');
+    domUpdates.addNamesToUserSearch(user.users)
   } else if ($('#form-text').val().includes('customer') && $('#form-password').val() === 'overlook2020') {
     $('.landing-page').css('display', 'none');
     $('.customer-page').css('display', 'flex');
@@ -86,12 +96,19 @@ function logUserOut() {
 };
 
 // Manager page
-function searchUserInfo() {
-
+function searchUserHandler() {
+  user.getCustomerData(searchedUserId);
+  let name = $("#customer-name-selection").val();
+  let amount = manager.getCustomerAmountSpent(searchedUserId).toFixed(2);
+  let allBookings = manager.getCustomerBookings(searchedUserId, today, 'all').length;
+  domUpdates.displayCustomerDetails(name, allBookings, amount);
 };
 
 function roomsAvailableHandler() {
-  user.getRoomsAvailable(today);
+  let todaysBookings = manager.getRoomsAvailable(today);
+  if (todaysBookings.length === 0) {
+    domUpdates.displayFullyBookedMessage();
+  }
 };
 
 function todaysRevenueHandler() {
@@ -102,10 +119,19 @@ function todaysOccupationHandler() {
   manager.getTodaysOccupancy(today);
 };
 
+function cancellationPageHandler() {
+  if (!searchedUserId) {
+    alert('Please select a customer.');
+  } else {
+    let futureBookings = manager.getCustomerBookings(searchedUserId, today, 'future');
+    domUpdates.displayCancellationOptions(futureBookings);
+  }
+};
+
 // Customer page
 function loadCustomerInfo(customerID) {
   customer = user.getCustomerData(customerID);
-}
+};
 
 function makeReservationHandler() {
   domUpdates.displayDatePicker();
@@ -138,11 +164,29 @@ function totalSpentHandler() {
 };
 
 function requestBooking() {
-  let usersID = user.customer.id
-  let dateRequested = $("#datepicker").val();
+  if (!$("#customer-name-selection").val()) {
+    alert('Please select a customer to make a reservation.');
+  }
+  let usersID = user.customer.id;
+  let dateRequested;
+  if (!$("#datepicker").val()) {
+    dateRequested = today;
+  } else {
+    dateRequested = $("#datepicker").val()
+  }
   let room = parseInt($(".book-room-btn").attr('id'));
-  fetcher.postReservation(usersID, dateRequested, room);
-  alert('Reservation has been booked successfully.');
-}
+  let reservation = fetcher.postReservation(usersID, dateRequested, room);
+  Promise.all([reservation]).then(() => {
+    alert('Reservation has been booked successfully.');
+  })
+};
+
+function requestCancellation() {
+  let bookingID = parseInt($('.cancel-room-btn').attr('id'));
+  let cancellation = fetcher.cancelReservation(bookingID);
+  Promise.all([cancellation]).then(() => {
+    alert('Reservation has been cancelled successfully.');
+  })
+};
 
 getAllData().then(data => createResortData(data))

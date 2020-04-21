@@ -4,7 +4,8 @@ import flatpickr from "flatpickr";
 const domUpdates = {
   addDatePicker() {
     flatpickr("#datepicker", {
-      dateFormat: "Y/m/d"
+      dateFormat: "Y/m/d",
+      minDate: "today"
     });
   },
 
@@ -26,6 +27,7 @@ const domUpdates = {
   },
 
   displayCustomerBookings(bookings) {
+    $('.message-banner').html('');
     $('.rooms-to-book-container').html('');
     bookings.forEach(booking => {
       $('.rooms-to-book-container').append(
@@ -78,6 +80,11 @@ const domUpdates = {
     }
   },
 
+  displayFullyBookedMessage() {
+    $('.message-banner').html(``);
+    $('.message-banner').text(`Riverside Resort is fully booked today!`);
+  },
+
   displayFilterOptions() {
     $('.customer-filter-options').html('');
     $('.customer-filter-options').prepend(`
@@ -100,6 +107,37 @@ const domUpdates = {
   displayTodaysOccupancy(occupancy) {
     $('.rooms-to-book-container').html('');
     $('.message-banner').text(`Riverside Resort is ${occupancy}% occupied today.`);
+  },
+
+  addNamesToUserSearch(customerList) {
+    customerList.forEach(customer => {
+      $('#customer-name-selection').append(`<option class="name-list" id="${customer.id}" value="${customer.name}">${customer.name}</option>`)
+    });
+  },
+
+  displayCustomerDetails(name, allBookings, amount) {
+    $('.message-banner').text(`${name}'s Profile: ${allBookings} reservations made and $${amount} spent`);
+  },
+
+  displayCancellationOptions(bookings) {
+      $('.message-banner').html('');
+      $('.rooms-to-book-container').html('');
+      bookings.forEach(booking => {
+        $('.rooms-to-book-container').append(
+          `
+            <li class="room-card" id="${booking.id}">
+              <p class="room-card-title">Room ${booking.roomNumber}</p>
+              <div class="room-card-details-container">
+                  <p class="room-card-details">Date of Reservation:</br>${booking.date}</p>
+                  <button type="submit" name="button" class="cancel-room-btn" id="${booking.id}">Cancel Reservation
+                  </button>
+              </div>
+            </li>
+        `)
+      })
+      if (bookings.length === 0) {
+        $('.message-banner').text(`This customer does not have any upcoming reservations.`);
+      }
   },
 
 };

@@ -77,7 +77,6 @@ header {
   width: 250px;
   background-color: transparent;
   border: none;
-  outline: none;
   border-bottom: 1.5px solid;
   border-bottom-color: $border-bottom-color;
   border-radius: 1px;
@@ -96,7 +95,6 @@ header {
 #sign-in-button {
   padding: 20px 30px;
   margin-top: 30px;
-  outline: none;
   border: none;
   font-size: medium;
   font-weight: 600;
@@ -116,18 +114,24 @@ header {
 }
 
 button,
-input {
+input, select {
   border: 0px;
   padding: 10px 15px;
   font-size: 120%;
   font-weight: 300;
-  outline: none;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
+}
+
+#manager-logout {
+  padding-left: 800px;
+}
+
+#customer-name-selection {
+  height: 43px;
 }
 
 button {
   border-radius: 5px;
-  outline: none;
   cursor: pointer;
   // opacity: .5;
 }
@@ -167,18 +171,9 @@ button:hover {
   background-color: $background-medium;
 }
 
-#manager-rooms-available, #manager-todays-revenue, #manager-todays-occupation {
+#manager-rooms-available, #manager-todays-revenue, #manager-todays-occupation, #manager-cancellation {
   cursor: pointer;
 }
-
-// #manager-rooms-available, #manager-todays-revenue, #manager-todays-occupation:hover {
-//   font-weight: bold;
-//   transform: translateY(5px);
-// }
-//
-// #manager-rooms-available, #manager-todays-revenue, #manager-todays-occupation:active {
-//   font-weight: bold;
-// }
 
 // Customer page
 #customer-make-reservation, #customer-past-reservations, #customer-upcoming-resverations, #customer-total-spent {
@@ -197,15 +192,12 @@ button:hover {
 }
 
 .room-card {
-  width: 100%;
-  max-width: 350px;
-  height: auto;
-  min-height: 300px;
   background-color: $background-white;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.03);
   border-radius: 5px;
-  cursor: pointer;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.03);
   filter: opacity(.8);
+  height: auto;
+  width: 350px;
 }
 
 .room-card-title {
@@ -226,11 +218,10 @@ button:hover {
   margin-inline-end: 0px;
 }
 
-.book-room-btn {
+.book-room-btn, .cancel-room-btn {
   padding: 20px 30px;
   margin-top: 30px;
   margin-bottom: 30px;
-  outline: none;
   border: none;
   font-size: medium;
   font-weight: 600;
@@ -247,16 +238,6 @@ footer {
 }
 
 .footer {
-  // opacity: .5;
   text-align: center;
   padding-top: 40px;
 }
-
-// DOM
-.selected {
-  color: $accent;
-}
-
-// .hidden {
-//   display: none;
-// }

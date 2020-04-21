@@ -39,10 +39,12 @@
       <nav>
         <ul class="nav">
           <li id="customer-search">
-            <input id="search-customer" placeholder="Customer Search" aria-label="Enter a customers name" type="text"></input>
+            <select id="customer-name-selection" list="customer-names" placeholder="Customer Search" aria-label="Select a customers name">
+              <option disabled selected value> Select a Customer</option>
+            </select>
             <button type="submit" name="button" id="customer-search-button">Search</button>
           </li>
-          <li>
+          <li id="manager-logout">
             <button type="submit" name="button" class="logout-btn">Logout
             </button>
           </li>
@@ -61,11 +63,16 @@
         <li id="manager-todays-occupation">
           <p>Rooms Occupied Today</p>
         </li>
+        <li id="manager-cancellation">
+          <p>Cancel Customer Reservation</p>
+        </li>
       </ul>
       <h2 class="message-banner"></h2>
       <ul class="bookings-container">
       </ul>
       <div class="add-room-container"></div>
+      <ul class="rooms-to-book-container">
+      </ul>
     </main>
   </section>
 
@@ -107,6 +114,5 @@
   <footer>
     <p class="footer">Copyright &copy 2020 Riverside Resort. All rights reserved.</p>
   </footer>
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>
