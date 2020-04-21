@@ -219,16 +219,27 @@ button:hover {
 }
 
 .book-room-btn, .cancel-room-btn {
-  padding: 20px 30px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  background: #b8bfcc;
+  border-radius: 1px;
   border: none;
+  cursor: pointer;
   font-size: medium;
   font-weight: 600;
   letter-spacing: 5px;
-  border-radius: 1px;
-  cursor: pointer;
-  background: #b8bfcc;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  padding: 20px 30px;
+}
+
+.customer-filter-date {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+label {
+  font-size: 120%;
+  font-weight: bold;
 }
 
 // Footer
