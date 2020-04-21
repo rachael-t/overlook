@@ -13,7 +13,7 @@ const domUpdates = {
     $('.customer-filter-date').html('');
     $('.rooms-to-book-container').html('');
     $('.message-banner').text(`Please select a date:`);
-    $('.customer-filter-date').prepend(`<input class="customer-select-date" id="datepicker" placeholder="Select Date"/>`);
+    $('.customer-filter-date').prepend(`<input class="customer-select-date" id="datepicker" placeholder="Select Date" aria-label="Select a date from the calendar dropdown"/>`);
     this.addDatePicker();
   },
 
