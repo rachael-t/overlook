@@ -141,6 +141,18 @@ const domUpdates = {
       }
   },
 
+  displayLogout() {
+    $('.landing-page').css('display', 'flex');
+    $('.manager-page').css('display', 'none');
+    $('.customer-page').css('display', 'none');
+    $('.rooms-to-book-container').html('');
+    $('#customer-name-selection').val('');
+    $('#datepicker').val('');
+    $('#form-password').val('');
+    $('#form-text').val('');
+    this.resetCategoryDisplay();
+  },
+
 };
 
 export default domUpdates;
