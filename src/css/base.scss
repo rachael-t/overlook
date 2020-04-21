@@ -4,122 +4,109 @@
 
 // Main page
 * {
+  box-sizing: border-box;
+  color: $font-dark;
+  font-family: $font;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: Lato, Arial, sans-serif;
-  color: $background-dark;
 }
 
 body,
 html {
   background-color: $background-main;
   outline: none;
-  cursor: default;
 }
 
 ul {
   list-style: none;
 }
-
 // Header
 h1 {
-  padding-top: 3%;
-  top: 25%;
-  font-weight: 200;
-  text-transform: uppercase;
-  text-align: center;
   font-size: 500%;
+  font-weight: 200;
+  padding-top: 3%;
+  text-align: $default-center;
+  text-transform: uppercase;
+  top: 25%;
   word-spacing: 10px;
 }
 
 header {
-  height: 50vh;
-  // background-color: $background-light;
-  background-image: url('../images/robson-hatsukami-morgan-qr7tsSwDOg0-unsplash.jpg');
+  @include adjust-container();
+  background-image: url("../images/robson-hatsukami-morgan-qr7tsSwDOg0-unsplash.jpg");
   background-size: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  height: 50vh;
 }
 
 // Login page
 .landing-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @include adjust-container();
 }
 
 .container {
-  margin: 5em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 50px 100px;
-  background-color: $login-form;
+  @include adjust-container();
+  background-color: $background-white;
   border-radius: 1px;
-  width: 25em;
   height: 40em;
+  margin: 5em;
+  padding: 50px 100px;
+  width: 25em;
 }
 
 .items {
-  display: flex;
-  flex-direction: column;
+  @include flex-adjust-direction(column);
 }
 
 .items input {
-  margin-bottom: 30px;
-  padding: 2px 0px;
-  padding-bottom: 5px;
-  width: 250px;
   background-color: transparent;
-  border: none;
   border-bottom: 1.5px solid;
   border-bottom-color: $border-bottom-color;
   border-radius: 1px;
   font-weight: 700;
-  color: $background-dark;
-  // opacity: 0.55;
+  color: $font-dark;
+  margin-bottom: 30px;
+  padding: 2px 0 5px;
+  width: 250px;
 }
 
 #title {
   margin-bottom: 50px;
   letter-spacing: 5px;
-  text-align: center;
-  // opacity: 0.5;
-}
-
-#sign-in-button {
-  padding: 20px 30px;
-  margin-top: 30px;
-  border: none;
-  font-size: medium;
-  font-weight: 600;
-  letter-spacing: 5px;
-  border-radius: 1px;
-  cursor: pointer;
-  background: #b8bfcc;
+  text-align: $default-center;
 }
 
 // Navigation Bar
 .nav {
-  display: flex;
-  flex-wrap: wrap;
-  flex: 1;
-  justify-content: space-evenly;
-  padding-top: 20px;
+  @include flex-adjust-justify (space-evenly);
 }
 
-button,
-input, select {
-  border: 0px;
-  padding: 10px 15px;
-  font-size: 120%;
-  font-weight: 300;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
+// Buttons, input fields, and dropdowns
+button {
+  @include button($background-white, 120%, 300, 10px 15px);
+  box-shadow: $box-shadow-buttons;
+}
+
+.book-room-btn,
+.cancel-room-btn,
+#sign-in-button {
+  @include button($accent, medium, 600, 20px 30px);
+  letter-spacing: 5px;
+  margin: 30px 0px;
+}
+
+.menu-item {
+  @include button(transparent, 100%, 400, 3px);
+  box-shadow: none;
+}
+
+input {
+  @include input-selection-fields();
+  cursor: text;
+  width: 60%;
+}
+
+select {
+  @include input-selection-fields();
 }
 
 #manager-logout {
@@ -130,69 +117,33 @@ input, select {
   height: 43px;
 }
 
-button {
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-input {
-  cursor: text;
-  width: 60%;
-  border-radius: 5px;
-}
-
-input:hover,
-button:hover {
-  opacity: 1;
-  transition: opacity, 1s;
-}
-
 // Loaded user page
 .main-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @include adjust-container();
 }
 
 .message-banner {
   margin-top: 50px;
 }
 
-// Details page
+// Detailed information pages
 .category-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex: 1;
-  justify-content: space-evenly;
+  @include flex-wrap(space-evenly);
+  background-color: $background-secondary;
   padding: 15px;
   width: 100%;
-  background-color: $background-medium;
 }
 
-// Menu bar
-.menu-item {
-  background: transparent;
-  box-shadow: none;
-  font-weight: 400;
-  padding: 3px;
-  font-size: 100%;
-}
-
-// Rooms view
 .rooms-to-book-container {
+  @include flex-wrap(space-between);
   align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  list-style: none;
   margin: 50px;
 }
 
 .room-card {
   background-color: $background-white;
   border-radius: 5px;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.03);
+  box-shadow: $box-shadow-cards;
   filter: opacity(.8);
   height: auto;
   margin: 15px;
@@ -202,37 +153,23 @@ button:hover {
 .room-card-title {
   font-size: 140%;
   padding: 15px;
-  text-align: center;
+  text-align: $default-center;
 }
 
 .room-card-details-container {
-  text-align: center;
+  text-align: $default-center;
 }
 
 .room-card-details {
   display: block;
-  margin-block-start: 1em;
   margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-}
-
-.book-room-btn, .cancel-room-btn {
-  background: #b8bfcc;
-  border-radius: 1px;
-  border: none;
-  cursor: pointer;
-  font-size: medium;
-  font-weight: 600;
-  letter-spacing: 5px;
-  margin-bottom: 30px;
-  margin-top: 30px;
-  padding: 20px 30px;
+  margin-block-start: 1em;
+  margin-inline-end: 0;
+  margin-inline-start: 0;
 }
 
 .customer-filter-date {
-  display: flex;
-  justify-content: center;
+  @include flex-adjust-justify(center);
   margin: 10px;
 }
 
@@ -243,10 +180,9 @@ label {
 
 // Footer
 footer {
-  color: $background-dark;
   height: 100px;
   p {
-    text-align: center;
+    text-align: $default-center;
     padding-top: 40px;
   }
 }
