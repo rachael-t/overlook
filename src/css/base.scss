@@ -246,9 +246,8 @@ label {
 footer {
   color: $background-dark;
   height: 100px;
-}
-
-.footer {
-  text-align: center;
-  padding-top: 40px;
+  p {
+    text-align: center;
+    padding-top: 40px;
+  }
 }
