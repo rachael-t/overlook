@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title>Riverside Resort</title>
   <link href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,700,900&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
@@ -34,7 +35,7 @@
 
   <!-- Manager Page -->
   <section class="logged-in-page">
-    <header class="manager-page" style="display: flex;">
+    <header class="manager-page" style="display: none;">
       <nav>
         <ul class="nav">
           <li id="customer-search">
@@ -51,7 +52,7 @@
       </nav>
       <h1>Riverside Resort</h1>
     </header>
-    <main class="main-page manager-page" style="display: flex;">
+    <main class="main-page manager-page" style="display: none;">
       <div class="category-container">
         <button type='submit' class='menu-item' id="manager-rooms-available">All Rooms Available Today</button>
         <button type='submit' class='menu-item' id="manager-todays-revenue">Today's Total Revenue</button>
@@ -65,7 +66,7 @@
 
   <!-- Customer Page -->
   <section class="logged-in-page">
-    <header class="customer-page" style="display: flex;">
+    <header class="customer-page" style="display: none;">
       <nav>
         <ul class="nav">
           <li>
@@ -76,7 +77,7 @@
       </nav>
       <h1>Riverside Resort</h1>
     </header>
-    <main class="main-page customer-page" style="display: flex;">
+    <main class="main-page customer-page" style="display: none;">
       <div class="category-container">
         <button type='submit' class='menu-item' id="customer-make-reservation">Make Reservation</button>
         <button type='submit' class='menu-item' id="customer-past-reservations">Past Reservations</button>
