@@ -133,7 +133,6 @@ input, select {
 button {
   border-radius: 5px;
   cursor: pointer;
-  // opacity: .5;
 }
 
 input {
@@ -173,7 +172,11 @@ button:hover {
 
 // Menu bar
 .menu-item {
-  cursor: pointer;
+  background: transparent;
+  box-shadow: none;
+  font-weight: 400;
+  padding: 3px;
+  font-size: 100%;
 }
 
 // Rooms view
