@@ -1,12 +1,12 @@
 // Imports
 import $ from 'jquery';
 import './css/base.scss';
-import './images/turing-logo.png'
-import './images/robson-hatsukami-morgan-qr7tsSwDOg0-unsplash.jpg'
-import utils from './utils.js'
-import User from './User.js'
-import Manager from './Manager.js'
-import domUpdates from './domUpdates.js'
+import './images/turing-logo.png';
+import './images/robson-hatsukami-morgan-qr7tsSwDOg0-unsplash.jpg';
+import utils from './utils.js';
+import User from './User.js';
+import Manager from './Manager.js';
+import domUpdates from './domUpdates.js';
 
 // Global variables
 let customer;
@@ -50,12 +50,12 @@ function getAllData() {
   let fetchedBookingsData = utils.fetchBookingsData()
     .then(data => data.bookings);
   return Promise.all([fetchedUsersData, fetchedRoomsData, fetchedBookingsData]);
-}
+};
 
 function createResortData(data) {
   user = new User(data[0], data[1], data[2]);
   manager = new Manager(data[0], data[1], data[2]);
-}
+};
 
 getAllData().then(data => createResortData(data));
 
@@ -65,13 +65,13 @@ function getTodaysDate() {
   let twoDigitDate = fullDate.getDate() + "";
   if (twoDigitMonth.length === 1) {
     twoDigitMonth = "0" + twoDigitMonth;
-  }
+  };
   if (twoDigitDate.length === 1) {
     twoDigitDate = "0" + twoDigitDate;
-  }
+  };
   let currentDate = fullDate.getFullYear() + "/" + twoDigitMonth + "/" + twoDigitDate;
   return currentDate;
-}
+};
 
 function logUserIn() {
   if ($('#form-text').val() === 'manager' && $('#form-password').val() === 'overlook2020') {
@@ -85,8 +85,8 @@ function logUserIn() {
     customerID = parseInt(customerLogin.slice(8));
     loadCustomerInfo(customerID);
   } else {
-    alert('Incorrect username or password. Please try again.')
-  }
+    alert('Incorrect username or password. Please try again.');
+  };
 };
 
 function logUserOut() {
@@ -124,7 +124,7 @@ function cancellationPageHandler() {
   } else {
     let futureBookings = manager.getCustomerBookings(searchedUserId, today, 'future');
     domUpdates.displayCancellationOptions(futureBookings);
-  }
+  };
 };
 
 // Customer page functions
@@ -149,36 +149,36 @@ function reservationFilterHandler() {
 
 function pastReservationsHandler() {
   domUpdates.resetCategoryDisplay();
-  user.getCustomerBookings(customer.id, today, 'past')
+  user.getCustomerBookings(customer.id, today, 'past');
 };
 
 function upcomingReservationsHandler() {
   domUpdates.resetCategoryDisplay();
-  user.getCustomerBookings(customer.id, today, 'future')
+  user.getCustomerBookings(customer.id, today, 'future');
 };
 
 function totalSpentHandler() {
   domUpdates.resetCategoryDisplay();
-  user.getCustomerAmountSpent(customer.id)
+  user.getCustomerAmountSpent(customer.id);
 };
 
 // Posting and deleting handlers
 function requestBooking() {
   if (!searchedUserId && !customerID) {
     alert('Please select a customer to make a reservation.');
-  }
+  };
   let usersID = user.customer.id;
   let dateRequested;
   if (!$("#datepicker").val()) {
     dateRequested = today;
   } else {
     dateRequested = $("#datepicker").val()
-  }
+  };
   let room = parseInt($(".book-room-btn").attr('id'));
   let reservation = utils.postReservation(usersID, dateRequested, room);
   Promise.all([reservation]).then(() => {
     alert('Reservation has been booked successfully.');
-  })
+  });
 };
 
 function requestCancellation() {
@@ -186,5 +186,5 @@ function requestCancellation() {
   let cancellation = utils.cancelReservation(bookingID);
   Promise.all([cancellation]).then(() => {
     alert('Reservation has been cancelled successfully.');
-  })
+  });
 };
