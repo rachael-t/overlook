@@ -47,21 +47,21 @@ describe('User', function () {
   it('should get all past bookings unique to a customer', function() {
     expect(user.getCustomerBookings(1, "2020/02/01", 'past')).to.deep.equal([
       {
-      "id": "5fwrgu4i7k55hl6td",
-      "userID": 1,
-      "date": "2020/01/31",
-      "roomNumber": 10,
-      "roomServiceCharges": []
+        "id": "5fwrgu4i7k55hl6td",
+        "userID": 1,
+        "date": "2020/01/31",
+        "roomNumber": 10,
+        "roomServiceCharges": []
       }
     ]);
     expect(domUpdates.displayCustomerBookings).to.have.been.called(1);
     expect(domUpdates.displayCustomerBookings).to.have.been.called.with([
       {
-      "id": "5fwrgu4i7k55hl6td",
-      "userID": 1,
-      "date": "2020/01/31",
-      "roomNumber": 10,
-      "roomServiceCharges": []
+        "id": "5fwrgu4i7k55hl6td",
+        "userID": 1,
+        "date": "2020/01/31",
+        "roomNumber": 10,
+        "roomServiceCharges": []
       }
     ]);
   })
@@ -69,21 +69,21 @@ describe('User', function () {
   it('should get all future bookings unique to a customer', function() {
     expect(user.getCustomerBookings(1, "2020/02/01", 'future')).to.deep.equal([
       {
-      "id": "5fwrgu4i7k55hl6t8",
-      "userID": 1,
-      "date": "2020/02/05",
-      "roomNumber": 6,
-      "roomServiceCharges": []
+        "id": "5fwrgu4i7k55hl6t8",
+        "userID": 1,
+        "date": "2020/02/05",
+        "roomNumber": 6,
+        "roomServiceCharges": []
       },
     ]);
     expect(domUpdates.displayCustomerBookings).to.have.been.called(1);
     expect(domUpdates.displayCustomerBookings).to.have.been.called.with([
       {
-      "id": "5fwrgu4i7k55hl6t8",
-      "userID": 1,
-      "date": "2020/02/05",
-      "roomNumber": 6,
-      "roomServiceCharges": []
+        "id": "5fwrgu4i7k55hl6t8",
+        "userID": 1,
+        "date": "2020/02/05",
+        "roomNumber": 6,
+        "roomServiceCharges": []
       },
     ]);
   })
@@ -96,176 +96,176 @@ describe('User', function () {
 
   it('should return the total rooms available for the current date', function() {
     expect(user.getRoomsAvailable("2020/02/14")).to.deep.equal([
-        {
+      {
         "number": 1,
         "roomType": "residential suite",
         "bidet": true,
         "bedSize": "queen",
         "numBeds": 1,
         "costPerNight": 358.4
-        },
-        {
+      },
+      {
         "number": 2,
         "roomType": "suite",
         "bidet": false,
         "bedSize": "full",
         "numBeds": 2,
         "costPerNight": 477.38
-        },
-        {
+      },
+      {
         "number": 3,
         "roomType": "single room",
         "bidet": false,
         "bedSize": "king",
         "numBeds": 1,
         "costPerNight": 491.14
-        },
-        {
+      },
+      {
         "number": 4,
         "roomType": "single room",
         "bidet": false,
         "bedSize": "queen",
         "numBeds": 1,
         "costPerNight": 429.44
-        },
-        {
+      },
+      {
         "number": 5,
         "roomType": "single room",
         "bidet": true,
         "bedSize": "queen",
         "numBeds": 2,
         "costPerNight": 340.17
-        },
-        {
+      },
+      {
         "number": 6,
         "roomType": "junior suite",
         "bidet": true,
         "bedSize": "queen",
         "numBeds": 1,
         "costPerNight": 397.02
-        },
-        {
+      },
+      {
         "number": 8,
         "roomType": "junior suite",
         "bidet": false,
         "bedSize": "king",
         "numBeds": 1,
         "costPerNight": 261.26
-        },
-        {
+      },
+      {
         "number": 9,
         "roomType": "single room",
         "bidet": true,
         "bedSize": "queen",
         "numBeds": 1,
         "costPerNight": 200.39
-        },
-        {
+      },
+      {
         "number": 10,
         "roomType": "suite",
         "bidet": false,
         "bedSize": "twin",
         "numBeds": 1,
         "costPerNight": 497.64
-        }
+      }
     ]);
     expect(domUpdates.displayRoomsAvailable).to.have.been.called(1);
     expect(domUpdates.displayRoomsAvailable).to.have.been.called.with([
-        {
+      {
         "number": 1,
         "roomType": "residential suite",
         "bidet": true,
         "bedSize": "queen",
         "numBeds": 1,
         "costPerNight": 358.4
-        },
-        {
+      },
+      {
         "number": 2,
         "roomType": "suite",
         "bidet": false,
         "bedSize": "full",
         "numBeds": 2,
         "costPerNight": 477.38
-        },
-        {
+      },
+      {
         "number": 3,
         "roomType": "single room",
         "bidet": false,
         "bedSize": "king",
         "numBeds": 1,
         "costPerNight": 491.14
-        },
-        {
+      },
+      {
         "number": 4,
         "roomType": "single room",
         "bidet": false,
         "bedSize": "queen",
         "numBeds": 1,
         "costPerNight": 429.44
-        },
-        {
+      },
+      {
         "number": 5,
         "roomType": "single room",
         "bidet": true,
         "bedSize": "queen",
         "numBeds": 2,
         "costPerNight": 340.17
-        },
-        {
+      },
+      {
         "number": 6,
         "roomType": "junior suite",
         "bidet": true,
         "bedSize": "queen",
         "numBeds": 1,
         "costPerNight": 397.02
-        },
-        {
+      },
+      {
         "number": 8,
         "roomType": "junior suite",
         "bidet": false,
         "bedSize": "king",
         "numBeds": 1,
         "costPerNight": 261.26
-        },
-        {
+      },
+      {
         "number": 9,
         "roomType": "single room",
         "bidet": true,
         "bedSize": "queen",
         "numBeds": 1,
         "costPerNight": 200.39
-        },
-        {
+      },
+      {
         "number": 10,
         "roomType": "suite",
         "bidet": false,
         "bedSize": "twin",
         "numBeds": 1,
         "costPerNight": 497.64
-        }
+      }
     ]);
   })
 
   it('should return the total rooms available for a selected date and room type', function() {
     expect(user.filterRoomsAvailable("2020/02/14", 'residential suite')).to.deep.equal([
-        {
+      {
         "number": 1,
         "roomType": "residential suite",
         "bidet": true,
         "bedSize": "queen",
         "numBeds": 1,
         "costPerNight": 358.4
-        }
-      ]);
+      }
+    ]);
     expect(domUpdates.displayRoomsAvailable).to.have.been.called(2);
     expect(domUpdates.displayRoomsAvailable).to.have.been.called.with([
       {
-      "number": 1,
-      "roomType": "residential suite",
-      "bidet": true,
-      "bedSize": "queen",
-      "numBeds": 1,
-      "costPerNight": 358.4
+        "number": 1,
+        "roomType": "residential suite",
+        "bidet": true,
+        "bedSize": "queen",
+        "numBeds": 1,
+        "costPerNight": 358.4
       }
     ]);
   })
