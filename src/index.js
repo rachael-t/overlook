@@ -40,17 +40,14 @@ $('body').on('click', '#customer-past-reservations', pastReservationsHandler);
 $('body').on('click', '#customer-upcoming-resverations', upcomingReservationsHandler);
 $('body').on('click', '#customer-total-spent', totalSpentHandler);
 
-// Functions
+// Functions for entire application
 function getAllData() {
   let fetchedUsersData = fetcher.fetchUsersData()
     .then(data => data.users);
-
   let fetchedRoomsData = fetcher.fetchRoomsData()
     .then(data => data.rooms);
-
   let fetchedBookingsData = fetcher.fetchBookingsData()
     .then(data => data.bookings);
-
   return Promise.all([fetchedUsersData, fetchedRoomsData, fetchedBookingsData]);
 }
 
@@ -58,6 +55,8 @@ function createResortData(data) {
   user = new User(data[0], data[1], data[2]);
   manager = new Manager(data[0], data[1], data[2]);
 }
+
+getAllData().then(data => createResortData(data));
 
 function getTodaysDate() {
   let fullDate = new Date();
@@ -90,12 +89,11 @@ function logUserIn() {
 };
 
 function logUserOut() {
-  $('.landing-page').css('display', 'flex');
-  $('.manager-page').css('display', 'none');
-  $('.customer-page').css('display', 'none');
+  domUpdates.displayLogout();
+  searchedUserId = null;
 };
 
-// Manager page
+// Manager page functions
 function searchUserHandler() {
   user.getCustomerData(searchedUserId);
   let name = $("#customer-name-selection").val();
@@ -128,7 +126,7 @@ function cancellationPageHandler() {
   }
 };
 
-// Customer page
+// Customer page functions
 function loadCustomerInfo(customerID) {
   customer = user.getCustomerData(customerID);
 };
@@ -163,6 +161,7 @@ function totalSpentHandler() {
   user.getCustomerAmountSpent(customer.id)
 };
 
+// Posting and deleting handlers
 function requestBooking() {
   if (!$("#customer-name-selection").val()) {
     alert('Please select a customer to make a reservation.');
@@ -188,5 +187,3 @@ function requestCancellation() {
     alert('Reservation has been cancelled successfully.');
   })
 };
-
-getAllData().then(data => createResortData(data))
