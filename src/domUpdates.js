@@ -11,6 +11,7 @@ const domUpdates = {
 
   displayDatePicker() {
     $('.customer-filter-date').html('');
+    $('.rooms-to-book-container').html('');
     $('.message-banner').text(`Please select a date:`);
     $('.customer-filter-date').prepend(`<input class="customer-select-date" id="datepicker" placeholder="Select Date"/>`);
     this.addDatePicker();
@@ -39,14 +40,14 @@ const domUpdates = {
             </div>
           </li>
       `)
-    })
+    });
     if (bookings.length === 0) {
       $('.message-banner').text(`You do not have any reservations for this time period.`);
     }
   },
 
   displayCustomerAmountSpent(amount) {
-    let roundedAmount =  amount.toFixed(2)
+    let roundedAmount = amount.toFixed(2)
     $('.rooms-to-book-container').html('');
     $('.message-banner').text(`You have spent a total of $${roundedAmount} at Riverside Resort`);
   },
@@ -100,7 +101,7 @@ const domUpdates = {
   },
 
   displayTodaysRevenue(amount) {
-    let roundedAmount =  amount.toFixed(2)
+    let roundedAmount = amount.toFixed(2)
     $('.rooms-to-book-container').html('');
     $('.message-banner').text(`Today's total revenue is $${roundedAmount}.`);
   },
@@ -121,24 +122,24 @@ const domUpdates = {
   },
 
   displayCancellationOptions(bookings) {
-      $('.message-banner').html('');
-      $('.rooms-to-book-container').html('');
-      bookings.forEach(booking => {
-        $('.rooms-to-book-container').append(
-          `
-            <li class="room-card" id="${booking.id}">
-              <p class="room-card-title">Room ${booking.roomNumber}</p>
-              <div class="room-card-details-container">
-                  <p class="room-card-details">Date of Reservation:</br>${booking.date}</p>
-                  <button type="submit" name="button" class="cancel-room-btn" id="${booking.id}">Cancel Reservation
-                  </button>
-              </div>
-            </li>
-        `)
-      })
-      if (bookings.length === 0) {
-        $('.message-banner').text(`This customer does not have any upcoming reservations.`);
-      }
+    $('.message-banner').html('');
+    $('.rooms-to-book-container').html('');
+    bookings.forEach(booking => {
+      $('.rooms-to-book-container').append(
+        `
+          <li class="room-card" id="${booking.id}">
+            <p class="room-card-title">Room ${booking.roomNumber}</p>
+            <div class="room-card-details-container">
+                <p class="room-card-details">Date of Reservation:</br>${booking.date}</p>
+                <button type="submit" name="button" class="cancel-room-btn" id="${booking.id}">Cancel Reservation
+                </button>
+            </div>
+          </li>
+      `)
+    })
+    if (bookings.length === 0) {
+      $('.message-banner').text(`This customer does not have any upcoming reservations.`);
+    }
   },
 
   displayLogout() {
@@ -154,5 +155,4 @@ const domUpdates = {
   },
 
 };
-
 export default domUpdates;
