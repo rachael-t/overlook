@@ -10,6 +10,7 @@ import domUpdates from './domUpdates.js'
 
 // Global variables
 let customer;
+let customerID;
 let manager;
 let searchedUserId;
 let today = getTodaysDate();
@@ -76,12 +77,12 @@ function logUserIn() {
   if ($('#form-text').val() === 'manager' && $('#form-password').val() === 'overlook2020') {
     $('.landing-page').css('display', 'none');
     $('.manager-page').css('display', 'flex');
-    domUpdates.addNamesToUserSearch(user.users)
+    domUpdates.addNamesToUserSearch(user.users);
   } else if ($('#form-text').val().includes('customer') && $('#form-password').val() === 'overlook2020') {
     $('.landing-page').css('display', 'none');
     $('.customer-page').css('display', 'flex');
     let customerLogin = $('#form-text').val();
-    let customerID = parseInt(customerLogin.slice(8))
+    customerID = parseInt(customerLogin.slice(8));
     loadCustomerInfo(customerID);
   } else {
     alert('Incorrect username or password. Please try again.')
@@ -163,7 +164,7 @@ function totalSpentHandler() {
 
 // Posting and deleting handlers
 function requestBooking() {
-  if (!$("#customer-name-selection").val()) {
+  if (!searchedUserId && !customerID) {
     alert('Please select a customer to make a reservation.');
   }
   let usersID = user.customer.id;
