@@ -3,7 +3,7 @@ import $ from 'jquery';
 import './css/base.scss';
 import './images/turing-logo.png'
 import './images/robson-hatsukami-morgan-qr7tsSwDOg0-unsplash.jpg'
-import fetcher from './fetcher.js'
+import utils from './utils.js'
 import User from './User.js'
 import Manager from './Manager.js'
 import domUpdates from './domUpdates.js'
@@ -43,11 +43,11 @@ $('body').on('click', '#customer-total-spent', totalSpentHandler);
 
 // Functions for entire application
 function getAllData() {
-  let fetchedUsersData = fetcher.fetchUsersData()
+  let fetchedUsersData = utils.fetchUsersData()
     .then(data => data.users);
-  let fetchedRoomsData = fetcher.fetchRoomsData()
+  let fetchedRoomsData = utils.fetchRoomsData()
     .then(data => data.rooms);
-  let fetchedBookingsData = fetcher.fetchBookingsData()
+  let fetchedBookingsData = utils.fetchBookingsData()
     .then(data => data.bookings);
   return Promise.all([fetchedUsersData, fetchedRoomsData, fetchedBookingsData]);
 }
@@ -175,7 +175,7 @@ function requestBooking() {
     dateRequested = $("#datepicker").val()
   }
   let room = parseInt($(".book-room-btn").attr('id'));
-  let reservation = fetcher.postReservation(usersID, dateRequested, room);
+  let reservation = utils.postReservation(usersID, dateRequested, room);
   Promise.all([reservation]).then(() => {
     alert('Reservation has been booked successfully.');
   })
@@ -183,7 +183,7 @@ function requestBooking() {
 
 function requestCancellation() {
   let bookingID = parseInt($('.cancel-room-btn').attr('id'));
-  let cancellation = fetcher.cancelReservation(bookingID);
+  let cancellation = utils.cancelReservation(bookingID);
   Promise.all([cancellation]).then(() => {
     alert('Reservation has been cancelled successfully.');
   })
