@@ -1,0 +1,40 @@
+@mixin flex-adjust-justify($justify-content) {
+  display: flex;
+  justify-content: $justify-content;
+}
+
+@mixin flex-adjust-direction($direction) {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin adjust-container() {
+  @include flex-adjust-justify(center);
+  align-items: center;
+  flex-direction: column;
+}
+
+@mixin flex-wrap($justify-content) {
+  @include flex-adjust-justify($justify-content);
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+@mixin button($color, $size, $weight, $padding) {
+  background: $color;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: $size;
+  font-weight: $weight;
+  padding: $padding;
+}
+
+@mixin input-selection-fields() {
+  border-radius: 5px;
+  border: 0;
+  box-shadow: $box-shadow-buttons;
+  font-size: 120%;
+  font-weight: 300;
+  padding: 10px 15px;
+}
