@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <title>Riverside Resort</title>
   <link href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,700,900&display=swap" rel="stylesheet">
-  <!-- <link rel="stylesheet" href="style.css" /> -->
 </head>
 
 <body>
@@ -25,8 +24,8 @@
       <div class="container">
         <h2 id="title">Login</h2>
         <div class="items">
-          <input type="text" id="form-text" placeholder="Username" />
-          <input type="password" id="form-password" placeholder="Password" />
+          <input type="text" id="form-text" placeholder="Username"/>
+          <input type="password" id="form-password" placeholder="Password"/>
           <button id="sign-in-button">Submit</button>
         </div>
       </div>
@@ -53,26 +52,14 @@
       <h1>Riverside Resort</h1>
     </header>
     <main class="main-page manager-page" style="display: none;">
-      <ul class="category-container">
-        <li id="manager-rooms-available">
-          <p>All Rooms Available Today</p>
-        </li>
-        <li id="manager-todays-revenue">
-          <p>Today's Total Revenue</p>
-        </li>
-        <li id="manager-todays-occupation">
-          <p>Rooms Occupied Today</p>
-        </li>
-        <li id="manager-cancellation">
-          <p>Cancel Customer Reservation</p>
-        </li>
-      </ul>
+      <div class="category-container">
+        <button type='submit' class='menu-item' id="manager-rooms-available">All Rooms Available Today</button>
+        <button type='submit' class='menu-item' id="manager-todays-revenue">Today's Total Revenue</button>
+        <button type='submit' class='menu-item' id="manager-todays-occupation">Rooms Occupied Today</button>
+        <button type='submit' class='menu-item' id="manager-cancellation">Cancel Customer Reservation</button>
+      </div>
       <h2 class="message-banner"></h2>
-      <ul class="bookings-container">
-      </ul>
-      <div class="add-room-container"></div>
-      <ul class="rooms-to-book-container">
-      </ul>
+      <ul class="rooms-to-book-container"></ul>
     </main>
   </section>
 
@@ -90,29 +77,22 @@
       <h1>Riverside Resort</h1>
     </header>
     <main class="main-page customer-page" style="display: none;">
-      <ul class="category-container">
-        <li id="customer-make-reservation">
-          <p>Make Reservation</p>
-        </li>
-        <li id="customer-past-reservations">
-          <p>Past Reservations</p>
-        </li>
-        <li id="customer-upcoming-resverations">
-          <p>Upcoming Reservations</p>
-        </li>
-        <li id="customer-total-spent">
-          <p>Total Amount Spent</p>
-        </li>
-      </ul>
+      <div class="category-container">
+        <button type='submit' class='menu-item' id="customer-make-reservation">Make Reservation</button>
+        <button type='submit' class='menu-item' id="customer-past-reservations">Past Reservations</button>
+        <button type='submit' class='menu-item' id="customer-upcoming-resverations">Upcoming Reservations</button>
+        <button type='submit' class='menu-item' id="customer-total-spent">Total Amount Spent</button>
+      </div>
       <h2 class='message-banner'></h2>
       <div class="customer-filter-date"></div>
       <div class="customer-filter-options"></div>
-      <ul class="rooms-to-book-container">
-      </ul>
+      <ul class="rooms-to-book-container"></ul>
     </main>
   </section>
+  
+  <!-- Footer for all pages -->
   <footer>
-    <p class="footer">Copyright &copy 2020 Riverside Resort. All rights reserved.</p>
+    <p>Copyright &copy 2020 Riverside Resort. All rights reserved.</p>
   </footer>
   </body>
 </html>
