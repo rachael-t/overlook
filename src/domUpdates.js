@@ -89,7 +89,8 @@ const domUpdates = {
     $('.customer-filter-options').html('');
     $('.customer-filter-options').prepend(`
       <label>Filter by Room Type:</label>
-      <select class='room-type-selection'>
+      <select class='room-type-selection' list='room-types' placeholder='Room Options' aria-label='Select a room type'>
+        <option disabled='' selected='' value=''>Room Options</option>
         <option value='residential suite'>residential suite</option>
         <option value='suite'>suite</option>
         <option value='single room'>single room</option>
