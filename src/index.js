@@ -102,11 +102,13 @@ function searchUserHandler() {
   let amount = manager.getCustomerAmountSpent(searchedUserId).toFixed(2);
   let allBookings = manager.getCustomerBookings(searchedUserId, today, 'all').length;
   domUpdates.displayCustomerDetails(name, allBookings, amount);
-  domUpdates.addCancellationToMenuBar();
 };
 
 function roomsAvailableHandler() {
-  manager.getRoomsAvailable(today);
+  let todaysBookings = manager.getRoomsAvailable(today);
+  if (todaysBookings.length === 0) {
+    domUpdates.displayFullyBookedMessage();
+  }
 };
 
 function todaysRevenueHandler() {
@@ -118,8 +120,12 @@ function todaysOccupationHandler() {
 };
 
 function cancellationPageHandler() {
-  let futureBookings = manager.getCustomerBookings(searchedUserId, today, 'future');
-  domUpdates.displayCancellationOptions(futureBookings);
+  if (!searchedUserId) {
+    alert('Please select a customer.');
+  } else {
+    let futureBookings = manager.getCustomerBookings(searchedUserId, today, 'future');
+    domUpdates.displayCancellationOptions(futureBookings);
+  }
 };
 
 // Customer page
