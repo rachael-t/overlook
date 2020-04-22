@@ -1,4 +1,4 @@
-@import '_mediaqueries.scss';
+
 @import '_variables.scss';
 @import '_mixins.scss';
 @import '~flatpickr/dist/flatpickr.css';
@@ -187,3 +187,5 @@ footer {
     padding-top: 40px;
   }
 }
+
+@import '_mediaqueries.scss';
