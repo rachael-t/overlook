@@ -162,7 +162,7 @@ function totalSpentHandler() {
   user.getCustomerAmountSpent(customer.id);
 }
 
-// Posting and deleting handlers
+// POST and DELETE handlers
 function requestBooking() {
   if (!searchedUserId && !customerID) {
     alert('Please select a customer to make a reservation.');
