@@ -154,5 +154,15 @@ const domUpdates = {
     this.resetCategoryDisplay();
   },
 
+  displayUserPage(username) {
+    if (username === 'manager') {
+      $('.landing-page').css('display', 'none');
+      $('.manager-page').css('display', 'flex');
+    } else {
+      $('.landing-page').css('display', 'none');
+      $('.customer-page').css('display', 'flex');
+    }
+  },
+
 };
 export default domUpdates;

@@ -74,13 +74,13 @@ function getTodaysDate() {
 }
 
 function logUserIn() {
-  if ($('#form-text').val() === 'manager' && $('#form-password').val() === 'overlook2020') {
-    $('.landing-page').css('display', 'none');
-    $('.manager-page').css('display', 'flex');
+  let username = $('#form-text').val();
+  let password = $('#form-password').val();
+  if (username === 'manager' && password === 'overlook2020') {
+    domUpdates.displayUserPage(username);
     domUpdates.addNamesToUserSearch(user.users);
-  } else if ($('#form-text').val().includes('customer') && $('#form-password').val() === 'overlook2020') {
-    $('.landing-page').css('display', 'none');
-    $('.customer-page').css('display', 'flex');
+  } else if (username.includes('customer') && password === 'overlook2020') {
+    domUpdates.displayUserPage(username);
     let customerLogin = $('#form-text').val();
     customerID = parseInt(customerLogin.slice(8));
     loadCustomerInfo(customerID);
