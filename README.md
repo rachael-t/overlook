@@ -1,9 +1,9 @@
-# Overlook
+# Riverside Resort
 
 
 ## Abstract
 
- The Overlook project was a solo project during Module 2 at [Turing School of Software & Design](https://turing.io/).
+ This [project](https://frontend.turing.io/projects/overlook.html) was a solo project during Module 2 at [Turing School of Software & Design](https://turing.io/).
 
  For this project, I was tasked with building a resort management tool (Riverside Resort) for customers and management to manage room bookings and determine total amounts spent/revenue generated at the resort.
 
