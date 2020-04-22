@@ -63,6 +63,15 @@
 
 * Create a robust test suite that thoroughly tests all functionality of a client-side application
 
+## Future Iterations
+
+* Add functionality for the resort manager to book a customer a reservation outside of the current day. (GitHub Issue #30)
+
+* Sort all past and upcoming bookings for a customer in descending order. (GitHub Issue #32)
+
+* After a customer/manager has booked/cancelled a reservation, the updated data should be retrieved from the API and loaded back into the application seamlessly so that the customer/manager has the most up-to-date data. (GitHub Issue #33)
+
+
 ## Contributor
 
 * [Rachael Thomas](https://github.com/rachael-t)
