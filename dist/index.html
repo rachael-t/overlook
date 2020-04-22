@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Riverside Resort</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,700,900&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <!-- Login Page -->
+  <header id="user-login-welcome" class="landing-page" style="display: flex;">
+    <nav>
+      <ul class="nav">
+        <li>
+          <p>Welcome! Please sign in.</p>
+        </li>
+      </ul>
+    </nav>
+    <h1>Riverside Resort</h1>
+  </header>
+  <main class="landing-page" style="display: flex;">
+    <section class="main-page">
+      <div class="container">
+        <h2 id="title">Login</h2>
+        <div class="items">
+          <input type="text" id="form-text" placeholder="Username"/>
+          <input type="password" id="form-password" placeholder="Password"/>
+          <button id="sign-in-button">Submit</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Manager Page -->
+  <section class="logged-in-page">
+    <header class="manager-page" style="display: none;">
+      <nav>
+        <ul class="nav">
+          <li id="customer-search">
+            <select id="customer-name-selection" list="customer-names" placeholder="Customer Search" aria-label="Select a customers name">
+              <option disabled selected value> Select a Customer</option>
+            </select>
+            <button type="submit" name="button" id="customer-search-button">Search</button>
+          </li>
+          <li id="manager-logout">
+            <button type="submit" name="button" class="logout-btn">Logout
+            </button>
+          </li>
+        </ul>
+      </nav>
+      <h1>Riverside Resort</h1>
+    </header>
+    <main class="main-page manager-page" style="display: none;">
+      <div class="category-container">
+        <button type='submit' class='menu-item' id="manager-rooms-available">All Rooms Available Today</button>
+        <button type='submit' class='menu-item' id="manager-todays-revenue">Today's Total Revenue</button>
+        <button type='submit' class='menu-item' id="manager-todays-occupation">Rooms Occupied Today</button>
+        <button type='submit' class='menu-item' id="manager-cancellation">Cancel Customer Reservation</button>
+      </div>
+      <h2 class="message-banner"></h2>
+      <ul class="rooms-to-book-container"></ul>
+    </main>
+  </section>
+
+  <!-- Customer Page -->
+  <section class="logged-in-page">
+    <header class="customer-page" style="display: none;">
+      <nav>
+        <ul class="nav">
+          <li>
+            <button type="submit" name="button" class="logout-btn">Logout
+            </button>
+          </li>
+        </ul>
+      </nav>
+      <h1>Riverside Resort</h1>
+    </header>
+    <main class="main-page customer-page" style="display: none;">
+      <div class="category-container">
+        <button type='submit' class='menu-item' id="customer-make-reservation">Make Reservation</button>
+        <button type='submit' class='menu-item' id="customer-past-reservations">Past Reservations</button>
+        <button type='submit' class='menu-item' id="customer-upcoming-resverations">Upcoming Reservations</button>
+        <button type='submit' class='menu-item' id="customer-total-spent">Total Amount Spent</button>
+      </div>
+      <h2 class='message-banner'></h2>
+      <div class="customer-filter-date"></div>
+      <div class="customer-filter-options"></div>
+      <ul class="rooms-to-book-container"></ul>
+    </main>
+  </section>
+
+  <!-- Footer for all pages -->
+  <footer>
+    <p>Copyright &copy 2020 Riverside Resort. All rights reserved.</p>
+  </footer>
+  <script type="text/javascript" src="main.bundle.js"></script></body>
+</html>

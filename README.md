@@ -3,9 +3,9 @@
 
 ## Abstract
 
- This project was a solo project during Module 2 at [Turing School of Software & Design](https://turing.io/).
+ The Overlook project was a solo project during Module 2 at [Turing School of Software & Design](https://turing.io/).
 
- For this project, I was tasked with building a resort management tool for customers and management to manage room bookings and determine total amounts spent/revenue generated at the resort.
+ For this project, I was tasked with building a resort management tool (Riverside Resort) for customers and management to manage room bookings and determine total amounts spent/revenue generated at the resort.
 
  A user arrives at the same login page, and based on their login credentials, are either taken to the manager page view or the customer page view.
 
@@ -32,6 +32,9 @@
 7. To log in as a manager, use username: manager and password: overlook2020
 
 
+## Deployed Website
+
+* [Riverside Resort](http://rachael-t.github.io/riverside-resort)
 
 ## Technologies Used
 
