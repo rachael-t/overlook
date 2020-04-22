@@ -32,7 +32,11 @@
 
 ## Project Images / Gifs
 
+![login-page](https://user-images.githubusercontent.com/54180641/79929165-30198000-8402-11ea-88d1-8aa407a4fe6a.gif)
 
+![manager-page](https://user-images.githubusercontent.com/54180641/79929178-3ad41500-8402-11ea-91ec-c6776326b9d3.gif)
+
+![customer-page](https://user-images.githubusercontent.com/54180641/79929235-66ef9600-8402-11ea-9be1-b4efd23306f3.gif)
 
 
 ## Learning Goals
