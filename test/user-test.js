@@ -1,4 +1,3 @@
-// import $ from 'jquery';
 import bookingsTestData from './bookings-test-data.js';
 import chai from 'chai';
 import domUpdates from '../src/domUpdates.js'
