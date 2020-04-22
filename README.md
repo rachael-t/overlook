@@ -7,7 +7,7 @@
 
  For this project, I was tasked with building a resort management tool (Riverside Resort) for customers and management to manage room bookings and determine total amounts spent/revenue generated at the resort.
 
- A user arrives at the same login page, and based on their login credentials, are either taken to the manager page view or the customer page view.
+ All users arrive at the same login page, and based on their login credentials, they are either taken to the manager page view or the customer page view.
 
  Managers are able to view the resort's availability for the day, the day's revenue, and the percentage of rooms occupied for the day. Additionally, they are able to select a loyal customer and make any necessary cancellations on their behalf, or book a same day reservation.
 
