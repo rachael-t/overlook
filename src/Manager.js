@@ -3,7 +3,7 @@ import User from './User.js'
 
 class Manager extends User {
   constructor(usersData, roomsData, bookingsData) {
-  super(usersData, roomsData, bookingsData);
+    super(usersData, roomsData, bookingsData);
   }
 
   getTodaysRevenue(date) {
@@ -22,8 +22,8 @@ class Manager extends User {
 
   getTodaysOccupancy(date) {
     let roomsAvailable = this.getRoomsAvailable(date);
-    let numRoomsBooked = this.rooms.length -roomsAvailable.length;
-    let occupancy = Math.round((numRoomsBooked /this.rooms.length) * 100);
+    let numRoomsBooked = this.rooms.length - roomsAvailable.length;
+    let occupancy = Math.round((numRoomsBooked / this.rooms.length) * 100);
     domUpdates.displayTodaysOccupancy(occupancy);
     return occupancy;
   }

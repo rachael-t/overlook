@@ -3,7 +3,6 @@ import chai from 'chai';
 import domUpdates from '../src/domUpdates.js'
 import Manager from '../src/Manager.js'
 import roomsTestData from './rooms-test-data.js';
-import User from '../src/User.js';
 import usersTestData from './users-test-data.js';
 
 const expect = chai.expect;
