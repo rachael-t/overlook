@@ -5,6 +5,16 @@
 
  This project was a solo project during Module 2 at [Turing School of Software & Design](https://turing.io/).
 
+ For this project, I was tasked with building a resort management tool for customers and management to manage room bookings and determine total amounts spent/revenue generated at the resort.
+
+ A user arrives at the same login page, and based on their login credentials, are either taken to the manager page view or the customer page view.
+
+ Managers are able to view the resort's availability for the day, the day's revenue, and the percentage of rooms occupied for the day. Additionally, they are able to select a loyal customer and make any necessary cancellations on their behalf, or book a same day reservation.
+
+ Customers are able to view their past reservations, upcoming reservations, and the total amount they've spent at the resort. Customers are also able to make a reservation and search for rooms available based on their date and room type preference.
+
+ Both users are able to logout and be taken back to the initial login screen.  
+
 ## Setup
 
 1. Fork this repository.
@@ -16,6 +26,10 @@
 4. Check that it is setup correctly by entering `run npm test` in your terminal. All tests should be passing.
 
 5. In your terminal, run `npm start` and then navigate to `http://localhost:8080/` in your browser.
+
+6. To log in as a customer, use username: customer[1 - 50] (for example: customer33) and password: overlook2020
+
+7. To log in as a manager, use username: manager and password: overlook2020
 
 
 
