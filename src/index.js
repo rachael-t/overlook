@@ -9,9 +9,11 @@ import Manager from './Manager.js';
 import domUpdates from './domUpdates.js';
 
 // Global variables
+let bookingID;
 let customer;
 let customerID;
 let manager;
+let room;
 let searchedUserId;
 let today = getTodaysDate();
 let user;
@@ -30,16 +32,23 @@ $('body').on('click', '#manager-rooms-available', roomsAvailableHandler);
 $('body').on('click', '#manager-todays-revenue', todaysRevenueHandler);
 $('body').on('click', '#manager-todays-occupation', todaysOccupationHandler);
 $('body').on('click', '#manager-cancellation', cancellationPageHandler);
-$('body').on('click', '.cancel-room-btn', requestCancellation);
+$('.rooms-to-book-container').delegate('.cancel-room-btn', 'click', (e) => {
+  bookingID = Number($(e.target).attr('id'));
+  requestCancellation(bookingID);
+})
 
 // Customer event liseners
 $('body').on('click', '#customer-make-reservation', makeReservationHandler);
 $('body').on('change', '#datepicker', reservationDateHandler);
 $('body').on('change', '.room-type-selection', reservationFilterHandler);
-$('body').on('click', '.book-room-btn', requestBooking);
 $('body').on('click', '#customer-past-reservations', pastReservationsHandler);
 $('body').on('click', '#customer-upcoming-resverations', upcomingReservationsHandler);
 $('body').on('click', '#customer-total-spent', totalSpentHandler);
+$('.rooms-to-book-container').delegate('.book-room-btn', 'click', (e) => {
+  room = Number($(e.target).attr('id'));
+  requestBooking(room);
+})
+
 
 // Functions for entire application
 function getAllData() {
@@ -163,7 +172,7 @@ function totalSpentHandler() {
 }
 
 // POST and DELETE handlers
-function requestBooking() {
+function requestBooking(room) {
   if (!searchedUserId && !customerID) {
     alert('Please select a customer to make a reservation.');
   }
@@ -174,15 +183,13 @@ function requestBooking() {
   } else {
     dateRequested = $("#datepicker").val()
   }
-  let room = parseInt($(".book-room-btn").attr('id'));
   let reservation = utils.postReservation(usersID, dateRequested, room);
   Promise.all([reservation]).then(() => {
     alert('Reservation has been booked successfully.');
   });
 }
 
-function requestCancellation() {
-  let bookingID = parseInt($('.cancel-room-btn').attr('id'));
+function requestCancellation(bookingID) {
   let cancellation = utils.cancelReservation(bookingID);
   Promise.all([cancellation]).then(() => {
     alert('Reservation has been cancelled successfully.');
